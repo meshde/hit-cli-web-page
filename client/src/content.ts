@@ -8,7 +8,7 @@
 // Hero Section Content
 export const heroSection = {
   title: "API commands at your fingertips",
-  subtitle: "A productivity-focused command-line API client that converts API endpoints into simple commands.",
+  subtitle: "A productivity-focused command-line API client for engineering teams that transforms repetitive API operations into shared command-line commands.",
   primaryButton: "Get Started",
   secondaryButton: "View Examples",
   terminalExamples: [
@@ -31,13 +31,13 @@ export const heroSection = {
 
 // Features Section Content
 export const featuresSection = {
-  title: "Why developers love hit",
-  subtitle: "Designed by developers for developers, hit eliminates repetitive tasks and streamlines your workflow.",
+  title: "Why engineering teams love hit",
+  subtitle: "Designed for fast-moving software teams, hit replaces ad-hoc curl commands with shareable, documented API operations.",
   features: [
     {
       icon: 'Zap',
       title: 'API Commands',
-      description: 'Convert API endpoints into simple command-line commands for quick access and execution.'
+      description: 'Transform complex API calls into simple team-wide command-line commands that anyone can use.'
     },
     {
       icon: 'GitBranch',
@@ -52,7 +52,7 @@ export const featuresSection = {
     {
       icon: 'Share2',
       title: 'Team Sharing',
-      description: 'Share API configurations with your team via Git, ensuring everyone has the same setup.'
+      description: 'Stop sharing curl commands in Slack! Encode API know-how in versioned config files that the whole team can use.'
     },
     {
       icon: 'Lock',
@@ -100,7 +100,7 @@ export const installationSection = {
 // Usage Examples Section Content
 export const usageExamplesSection = {
   title: "Usage Examples",
-  subtitle: "See how hit makes your API workflows simpler with these common use cases.",
+  subtitle: "See how hit reduces time spent on repetitive support operations and simplifies API workflows for your entire team.",
   tabs: {
     basic: {
       title: "Basic Commands",
@@ -191,10 +191,10 @@ export const usageExamplesSection = {
   },
   teamSection: {
     title: "Team Collaboration",
-    description: "Share API configuration with your team via Git:",
+    description: "Encode API know-how in version-controlled config files instead of sharing curl commands in Slack:",
     commands: [
       "git add .hit/",
-      "git commit -m \"Add API config\"",
+      "git commit -m \"Add admin endpoints to hit config\"",
       "git push"
     ]
   },
@@ -208,8 +208,8 @@ export const usageExamplesSection = {
 
 // Get Started Section Content
 export const getStartedSection = {
-  title: "Ready to simplify your API workflows?",
-  subtitle: "Join developers who have transformed their API interactions with hit. Configure once, share with your team, and use everywhere.",
+  title: "Ready to streamline your team's API operations?",
+  subtitle: "Join fast-moving engineering teams who have reduced support time and democratized API access with hit. Configure once, share with your team, and use everywhere.",
   primaryButton: {
     text: "Install Now",
     link: "#installation"
@@ -222,7 +222,7 @@ export const getStartedSection = {
 
 // Footer Content
 export const footerSection = {
-  description: "A productivity-focused command-line API client that converts API endpoints into simple commands.",
+  description: "A team-focused command-line API client that transforms admin endpoints into shareable, documented commands - no more copy-pasting curl commands in Slack.",
   socialLinks: {
     github: "https://github.com/meshde/hit-cli",
     twitter: "https://twitter.com/meshde"
