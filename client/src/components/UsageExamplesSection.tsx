@@ -87,6 +87,38 @@ const UsageExamplesSection: React.FC = () => {
           </Terminal>
         </div>
       </>
+    ),
+    auth: (
+      <>
+        <h3 className="text-xl font-semibold mb-4">{usageExamplesSection.tabs.auth.description}</h3>
+        
+        <div className="mb-6">
+          <p className="text-gray-300 mb-2">Configure commands with authentication headers:</p>
+          <CodeBlock 
+            language="json"
+            code={usageExamplesSection.tabs.auth.configExample}
+          />
+          <p className="text-gray-300 mt-4 mb-2">Set your authentication token and make the request:</p>
+          <Terminal>
+            <code className="text-sm sm:text-base">
+              {usageExamplesSection.tabs.auth.commandExample.split('\n\n').map((cmd, idx) => (
+                <React.Fragment key={idx}>
+                  <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">
+                    {cmd.split(' ').slice(0, 1)}
+                  </span> <span className="text-[#8B5CF6]">
+                    {cmd.split(' ').slice(1, 2)}
+                  </span> {cmd.split(' ').slice(2).join(' ')}
+                  <br />
+                  {idx < usageExamplesSection.tabs.auth.output.length && (
+                    <span className="text-[#9CA3AF]">{usageExamplesSection.tabs.auth.output[idx]}<br /></span>
+                  )}
+                  {idx === 0 && <br />}
+                </React.Fragment>
+              ))}
+            </code>
+          </Terminal>
+        </div>
+      </>
     )
   };
 
@@ -128,6 +160,9 @@ const UsageExamplesSection: React.FC = () => {
               </TabsContent>
               <TabsContent value="envs">
                 {tabContent.envs}
+              </TabsContent>
+              <TabsContent value="auth">
+                {tabContent.auth}
               </TabsContent>
             </div>
           </Tabs>

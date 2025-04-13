@@ -156,6 +156,23 @@ export const usageExamplesSection = {
 }`,
       commandExample: "hit env use dev\n\nhit run list-users",
       output: ["✓ Switched to dev environment", "// This now calls https://dev.api.com/users"]
+    },
+    auth: {
+      title: "Authentication",
+      description: "Authentication Support",
+      configExample: `{
+  "commands": {
+    "get-profile": {
+      "url": "https://your.api.com/profile",
+      "method": "GET",
+      "headers": {
+        "Authorization": "Bearer {{API_TOKEN}}"
+      }
+    }
+  }
+}`,
+      commandExample: "hit env set API_TOKEN \"my-secret-token\"\n\nhit run get-profile",
+      output: ["✓ Set API_TOKEN in current environment", "{ \"id\": 123, \"name\": \"John Doe\", \"email\": \"john@example.com\", \"role\": \"admin\" }"]
     }
   },
   responsesSection: {
