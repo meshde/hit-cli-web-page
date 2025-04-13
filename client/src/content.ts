@@ -164,7 +164,6 @@ export const usageExamplesSection = {
     command: "hit run list-users\n\nhit last view",
     output: [
       "[...] // Response body",
-      "",
       "Status: 200 OK",
       "Headers:",
       "content-type: application/json",
@@ -185,7 +184,7 @@ export const usageExamplesSection = {
   authSection: {
     title: "Authentication",
     description: "Add authentication to your requests:",
-    command: "hit env set API_TOKEN \"my-secret-token\"",
+    command: "hit ephenv set API_TOKEN \"my-secret-token\"",
     output: ["✓ Set API_TOKEN in current environment"]
   }
 };
@@ -200,7 +199,7 @@ export const getStartedSection = {
   },
   secondaryButton: {
     text: "GitHub Repository",
-    link: "https://github.com/meshde/hit-cli-issues"
+    link: "https://github.com/meshde/hit-cli"
   }
 };
 
@@ -208,7 +207,7 @@ export const getStartedSection = {
 export const footerSection = {
   description: "A productivity-focused command-line API client that converts API endpoints into simple commands.",
   socialLinks: {
-    github: "https://github.com/meshde/hit-cli-issues",
+    github: "https://github.com/meshde/hit-cli",
     twitter: "https://twitter.com/meshde"
   },
   quickLinks: [
@@ -217,9 +216,9 @@ export const footerSection = {
     { text: "Usage Examples", link: "#usage" }
   ],
   resources: [
-    { text: "GitHub Repository", link: "https://github.com/meshde/hit-cli-issues" },
-    { text: "Release Notes", link: "https://github.com/meshde/hit-cli-issues/releases" },
-    { text: "Report Issues", link: "https://github.com/meshde/hit-cli-issues/issues" }
+    { text: "GitHub Repository", link: "https://github.com/meshde/hit-cli" },
+    { text: "Release Notes", link: "https://github.com/meshde/hit-cli/releases" },
+    { text: "Report Issues", link: "https://github.com/meshde/hit-cli/issues" }
   ],
   copyright: `© ${new Date().getFullYear()} hit CLI. All rights reserved.`
 };
@@ -231,5 +230,5 @@ export const headerSection = {
     { text: "Installation", link: "#installation" },
     { text: "Usage", link: "#usage" }
   ],
-  githubLink: "https://github.com/meshde/hit-cli-issues"
+  githubLink: "https://github.com/meshde/hit-cli"
 };
