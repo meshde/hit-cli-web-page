@@ -1,11 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Terminal from './Terminal';
 import CodeBlock from './CodeBlock';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { usageExamplesSection } from '../content';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const UsageExamplesSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState("basic");
+  const tabsContainerRef = useRef<HTMLDivElement>(null);
+  const [scrollState, setScrollState] = useState({ canScrollLeft: false, canScrollRight: true });
+  
+  const handleScroll = () => {
+    if (tabsContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = tabsContainerRef.current;
+      setScrollState({
+        canScrollLeft: scrollLeft > 0,
+        canScrollRight: scrollLeft < scrollWidth - clientWidth - 1
+      });
+    }
+  };
+  
+  const scroll = (direction: 'left' | 'right') => {
+    if (tabsContainerRef.current) {
+      const scrollAmount = 200; // px to scroll
+      const currentScroll = tabsContainerRef.current.scrollLeft;
+      tabsContainerRef.current.scrollTo({
+        left: direction === 'left' 
+          ? currentScroll - scrollAmount 
+          : currentScroll + scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+  
+  // Add scroll event listener and check initial scroll state
+  useEffect(() => {
+    const tabsContainer = tabsContainerRef.current;
+    if (tabsContainer) {
+      tabsContainer.addEventListener('scroll', handleScroll);
+      // Check initial scroll state
+      handleScroll();
+      
+      return () => {
+        tabsContainer.removeEventListener('scroll', handleScroll);
+      };
+    }
+  }, []);
   
   const tabContent = {
     basic: (
@@ -138,18 +178,41 @@ const UsageExamplesSection: React.FC = () => {
         {/* Example Tabs */}
         <div className="mb-12">
           <Tabs defaultValue="basic" value={activeTab} onValueChange={setActiveTab}>
-            <div className="border-b border-gray-800 mb-6 overflow-x-auto pb-1">
-              <TabsList className="bg-transparent flex-nowrap min-w-max inline-flex w-full">
-                {Object.entries(usageExamplesSection.tabs).map(([key, tab]) => (
-                  <TabsTrigger 
-                    key={key}
-                    value={key}
-                    className="data-[state=active]:border-[#14B8A6] data-[state=active]:text-[#14B8A6] data-[state=active]:border-b-2 border-b-2 border-transparent rounded-none bg-transparent whitespace-nowrap flex-shrink-0 px-4 py-2"
-                  >
-                    {tab.title}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
+            <div className="relative border-b border-gray-800 mb-6">
+              {/* Left scroll button */}
+              <button 
+                onClick={() => scroll('left')} 
+                className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-[#1E293B]/90 backdrop-blur-sm border border-gray-700 transition-opacity ${scrollState.canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+              >
+                <ChevronLeft className="w-5 h-5 text-[#14B8A6]" />
+              </button>
+              
+              {/* Tabs container with horizontal scrolling */}
+              <div 
+                ref={tabsContainerRef} 
+                className="overflow-x-auto pb-1 scrollbar-hide"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                <TabsList className="bg-transparent flex-nowrap min-w-max inline-flex w-full px-10">
+                  {Object.entries(usageExamplesSection.tabs).map(([key, tab]) => (
+                    <TabsTrigger 
+                      key={key}
+                      value={key}
+                      className="data-[state=active]:border-[#14B8A6] data-[state=active]:text-[#14B8A6] data-[state=active]:border-b-2 border-b-2 border-transparent rounded-none bg-transparent whitespace-nowrap flex-shrink-0 px-4 py-2"
+                    >
+                      {tab.title}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </div>
+              
+              {/* Right scroll button */}
+              <button 
+                onClick={() => scroll('right')} 
+                className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-[#1E293B]/90 backdrop-blur-sm border border-gray-700 transition-opacity ${scrollState.canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+              >
+                <ChevronRight className="w-5 h-5 text-[#14B8A6]" />
+              </button>
             </div>
 
             <div className="bg-[#1E293B]/70 rounded-lg p-4 sm:p-6 border border-gray-800">
