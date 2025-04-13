@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Terminal from './Terminal';
 import CodeBlock from './CodeBlock';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { usageExamplesSection } from '../content';
 
 const UsageExamplesSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState("basic");
@@ -9,33 +10,24 @@ const UsageExamplesSection: React.FC = () => {
   const tabContent = {
     basic: (
       <>
-        <h3 className="text-xl font-semibold mb-4">Basic API Commands</h3>
+        <h3 className="text-xl font-semibold mb-4">{usageExamplesSection.tabs.basic.description}</h3>
         
         <div className="mb-6">
           <p className="text-gray-300 mb-2">Set up a simple API command in your config:</p>
           <CodeBlock 
             language="json"
-            code={`{
-  "commands": {
-    "list-users": {
-      "url": "https://your.api.com/users",
-      "method": "GET"
-    }
-  }
-}`}
+            code={usageExamplesSection.tabs.basic.configExample}
           />
           <p className="text-gray-300 mt-4 mb-2">Then run the command:</p>
           <Terminal>
             <code className="text-sm sm:text-base">
               <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users
               <br />
-              <span className="text-[#9CA3AF]">[</span>
-              <br />
-              <span className="text-[#9CA3AF] ml-4">{"  {"} "id": 1, "name": "John Doe", "email": "john@example.com" {"}"},</span>
-              <br />
-              <span className="text-[#9CA3AF] ml-4">{"  {"} "id": 2, "name": "Jane Smith", "email": "jane@example.com" {"}"}</span>
-              <br />
-              <span className="text-[#9CA3AF]">]</span>
+              {usageExamplesSection.tabs.basic.output.map((line, idx) => (
+                <span key={idx} className={`text-[#9CA3AF] ${line.startsWith('  ') ? 'ml-4' : ''}`}>
+                  {line}<br />
+                </span>
+              ))}
             </code>
           </Terminal>
         </div>
@@ -43,27 +35,22 @@ const UsageExamplesSection: React.FC = () => {
     ),
     params: (
       <>
-        <h3 className="text-xl font-semibold mb-4">Route Parameters</h3>
+        <h3 className="text-xl font-semibold mb-4">{usageExamplesSection.tabs.params.description}</h3>
         
         <div className="mb-6">
           <p className="text-gray-300 mb-2">Set up commands with route parameters:</p>
           <CodeBlock 
             language="json"
-            code={`{
-  "commands": {
-    "get-user": {
-      "url": "https://your.api.com/users/:userId",
-      "method": "GET"
-    }
-  }
-}`}
+            code={usageExamplesSection.tabs.params.configExample}
           />
           <p className="text-gray-300 mt-4 mb-2">Use with parameters:</p>
           <Terminal>
             <code className="text-sm sm:text-base">
               <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> get-user --user-id 47
               <br />
-              <span className="text-[#9CA3AF]">{"{"} "id": 47, "name": "Alice Johnson", "email": "alice@example.com" {"}"}</span>
+              {usageExamplesSection.tabs.params.output.map((line, idx) => (
+                <span key={idx} className="text-[#9CA3AF]">{line}</span>
+              ))}
             </code>
           </Terminal>
         </div>
@@ -71,40 +58,31 @@ const UsageExamplesSection: React.FC = () => {
     ),
     envs: (
       <>
-        <h3 className="text-xl font-semibold mb-4">Environment Variables</h3>
+        <h3 className="text-xl font-semibold mb-4">{usageExamplesSection.tabs.envs.description}</h3>
         
         <div className="mb-6">
           <p className="text-gray-300 mb-2">Define environments in your config:</p>
           <CodeBlock 
             language="json"
-            code={`{
-  "envs": {
-    "prod": {
-      "API_URL": "https://prod.api.com"
-    },
-    "dev": {
-      "API_URL": "https://dev.api.com"
-    }
-  },
-  "commands": {
-    "list-users": {
-      "url": "{{API_URL}}/users",
-      "method": "GET"
-    }
-  }
-}`}
+            code={usageExamplesSection.tabs.envs.configExample}
           />
           <p className="text-gray-300 mt-4 mb-2">Switch between environments:</p>
           <Terminal>
             <code className="text-sm sm:text-base">
-              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">env</span> use dev
-              <br />
-              <span className="text-[#9CA3AF]">✓ Switched to dev environment</span>
-              <br />
-              <br />
-              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users
-              <br />
-              <span className="text-[#9CA3AF]">// This now calls https://dev.api.com/users</span>
+              {usageExamplesSection.tabs.envs.commandExample.split('\n\n').map((cmd, idx) => (
+                <React.Fragment key={idx}>
+                  <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">
+                    {cmd.split(' ').slice(0, 1)}
+                  </span> <span className="text-[#8B5CF6]">
+                    {cmd.split(' ').slice(1, 2)}
+                  </span> {cmd.split(' ').slice(2).join(' ')}
+                  <br />
+                  {idx < usageExamplesSection.tabs.envs.output.length && (
+                    <span className="text-[#9CA3AF]">{usageExamplesSection.tabs.envs.output[idx]}<br /></span>
+                  )}
+                  {idx === 0 && <br />}
+                </React.Fragment>
+              ))}
             </code>
           </Terminal>
         </div>
@@ -117,10 +95,10 @@ const UsageExamplesSection: React.FC = () => {
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-[#F9FAFB]">
-            Usage <span className="text-[#14B8A6]">Examples</span>
+            {usageExamplesSection.title.split(' ').slice(0, -1).join(' ')} <span className="text-[#14B8A6]">{usageExamplesSection.title.split(' ').slice(-1)}</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            See how hit makes your API workflows simpler with these common use cases.
+            {usageExamplesSection.subtitle}
           </p>
         </div>
 
@@ -129,24 +107,15 @@ const UsageExamplesSection: React.FC = () => {
           <Tabs defaultValue="basic" value={activeTab} onValueChange={setActiveTab}>
             <div className="border-b border-gray-800 mb-6">
               <TabsList className="bg-transparent">
-                <TabsTrigger 
-                  value="basic"
-                  className="data-[state=active]:border-[#14B8A6] data-[state=active]:text-[#14B8A6] data-[state=active]:border-b-2 border-b-2 border-transparent rounded-none bg-transparent"
-                >
-                  Basic Commands
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="params"
-                  className="data-[state=active]:border-[#14B8A6] data-[state=active]:text-[#14B8A6] data-[state=active]:border-b-2 border-b-2 border-transparent rounded-none bg-transparent"
-                >
-                  Route Parameters
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="envs"
-                  className="data-[state=active]:border-[#14B8A6] data-[state=active]:text-[#14B8A6] data-[state=active]:border-b-2 border-b-2 border-transparent rounded-none bg-transparent"
-                >
-                  Environments
-                </TabsTrigger>
+                {Object.entries(usageExamplesSection.tabs).map(([key, tab]) => (
+                  <TabsTrigger 
+                    key={key}
+                    value={key}
+                    className="data-[state=active]:border-[#14B8A6] data-[state=active]:text-[#14B8A6] data-[state=active]:border-b-2 border-b-2 border-transparent rounded-none bg-transparent"
+                  >
+                    {tab.title}
+                  </TabsTrigger>
+                ))}
               </TabsList>
             </div>
 
@@ -165,55 +134,69 @@ const UsageExamplesSection: React.FC = () => {
         </div>
 
         <div className="bg-[#1E293B]/70 rounded-lg p-6 border border-gray-800 mb-12">
-          <h3 className="text-xl font-semibold mb-4">Inspecting Responses</h3>
-          <p className="text-gray-300 mb-4">View full API responses including headers and status codes:</p>
+          <h3 className="text-xl font-semibold mb-4">{usageExamplesSection.responsesSection.title}</h3>
+          <p className="text-gray-300 mb-4">{usageExamplesSection.responsesSection.description}</p>
           
           <Terminal>
             <code className="text-sm sm:text-base">
-              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users
-              <br />
-              <span className="text-[#9CA3AF]">[...] // Response body</span>
-              <br /><br />
-              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">last</span> view
-              <br />
-              <span className="text-[#9CA3AF]">Status: 200 OK</span>
-              <br />
-              <span className="text-[#9CA3AF]">Headers:</span>
-              <br />
-              <span className="text-[#9CA3AF] ml-4">content-type: application/json</span>
-              <br />
-              <span className="text-[#9CA3AF] ml-4">cache-control: max-age=0, private, must-revalidate</span>
-              <br />
-              <span className="text-[#9CA3AF]">Body:</span>
-              <br />
-              <span className="text-[#9CA3AF] ml-4">[...]</span>
+              {usageExamplesSection.responsesSection.command.split('\n\n').map((cmd, cmdIdx) => (
+                <React.Fragment key={cmdIdx}>
+                  <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">
+                    {cmd.split(' ').slice(0, 1)}
+                  </span> <span className="text-[#8B5CF6]">
+                    {cmd.split(' ').slice(1, 2)}
+                  </span> {cmd.split(' ').slice(2).join(' ')}
+                  <br />
+                  {cmdIdx === 0 && (
+                    <>
+                      <span className="text-[#9CA3AF]">{usageExamplesSection.responsesSection.output[0]}</span>
+                      <br /><br />
+                    </>
+                  )}
+                </React.Fragment>
+              ))}
+              {usageExamplesSection.responsesSection.output.slice(1).map((line, idx) => (
+                <React.Fragment key={idx}>
+                  <span className={`text-[#9CA3AF] ${line.startsWith('content-type') || line.startsWith('cache-control') ? 'ml-4' : ''}`}>
+                    {line}
+                  </span>
+                  <br />
+                </React.Fragment>
+              ))}
             </code>
           </Terminal>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-[#1E293B]/70 rounded-lg p-6 border border-gray-800">
-            <h3 className="text-xl font-semibold mb-4">Team Collaboration</h3>
-            <p className="text-gray-300 mb-4">Share API configuration with your team via Git:</p>
+            <h3 className="text-xl font-semibold mb-4">{usageExamplesSection.teamSection.title}</h3>
+            <p className="text-gray-300 mb-4">{usageExamplesSection.teamSection.description}</p>
             <Terminal>
               <code className="text-sm sm:text-base">
-                <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">git</span> add .hit/
-                <br />
-                <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">git</span> commit -m "Add API config"
-                <br />
-                <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">git</span> push
+                {usageExamplesSection.teamSection.commands.map((cmd, idx) => (
+                  <React.Fragment key={idx}>
+                    <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">
+                      {cmd.split(' ').slice(0, 1)}
+                    </span> {cmd.split(' ').slice(1).join(' ')}
+                    <br />
+                  </React.Fragment>
+                ))}
               </code>
             </Terminal>
           </div>
 
           <div className="bg-[#1E293B]/70 rounded-lg p-6 border border-gray-800">
-            <h3 className="text-xl font-semibold mb-4">Authentication</h3>
-            <p className="text-gray-300 mb-4">Add authentication to your requests:</p>
+            <h3 className="text-xl font-semibold mb-4">{usageExamplesSection.authSection.title}</h3>
+            <p className="text-gray-300 mb-4">{usageExamplesSection.authSection.description}</p>
             <Terminal>
               <code className="text-sm sm:text-base">
-                <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">env</span> set API_TOKEN "my-secret-token"
+                <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">
+                  {usageExamplesSection.authSection.command.split(' ').slice(0, 1)}
+                </span> <span className="text-[#8B5CF6]">
+                  {usageExamplesSection.authSection.command.split(' ').slice(1, 2)}
+                </span> {usageExamplesSection.authSection.command.split(' ').slice(2).join(' ')}
                 <br />
-                <span className="text-[#9CA3AF]">✓ Set API_TOKEN in current environment</span>
+                <span className="text-[#9CA3AF]">{usageExamplesSection.authSection.output[0]}</span>
               </code>
             </Terminal>
           </div>
