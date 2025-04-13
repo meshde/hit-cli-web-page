@@ -33,7 +33,7 @@ const Header: React.FC = () => {
               <li><a href="#usage" className="text-sm text-gray-300 hover:text-[#14B8A6] transition">Usage</a></li>
               <li>
                 <a 
-                  href="https://github.com/username/hit" 
+                  href="https://github.com/meshde/hit-cli-issues" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="flex items-center text-sm text-gray-300 hover:text-[#14B8A6] transition"

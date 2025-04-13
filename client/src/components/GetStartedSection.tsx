@@ -6,10 +6,10 @@ const GetStartedSection: React.FC = () => {
       <div className="container mx-auto max-w-4xl">
         <div className="bg-gradient-to-r from-[#14B8A6]/20 to-[#8B5CF6]/20 rounded-xl p-8 sm:p-12 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-[#F9FAFB]">
-            Ready to <span className="text-[#14B8A6]">supercharge</span> your workflow?
+            Ready to <span className="text-[#14B8A6]">simplify</span> your API workflows?
           </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Join thousands of developers who have already transformed their productivity with hit.
+            Join developers who have transformed their API interactions with hit. Configure once, share with your team, and use everywhere.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a 
@@ -19,12 +19,12 @@ const GetStartedSection: React.FC = () => {
               Install Now
             </a>
             <a 
-              href="https://docs.hit-cli.dev" 
+              href="https://github.com/meshde/hit-cli-issues" 
               target="_blank"
               rel="noopener noreferrer" 
               className="px-8 py-3 bg-transparent border border-[#14B8A6] text-[#14B8A6] font-medium rounded-md hover:bg-[#14B8A6]/10 transition text-lg"
             >
-              Read the Docs
+              GitHub Repository
             </a>
           </div>
         </div>
