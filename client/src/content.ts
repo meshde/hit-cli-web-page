@@ -240,12 +240,58 @@ export const footerSection = {
   copyright: `© ${new Date().getFullYear()} hit CLI. All rights reserved.`
 };
 
+// Comparison Section Content
+export const comparisonSection = {
+  title: "Hit vs Postman",
+  subtitle: "Why engineering teams prefer hit over Postman for API operations",
+  advantages: [
+    {
+      title: "No Subscription Costs",
+      description: "Unlimited collaborators to manage hit in your project without having to pay for any per-seat subscription.",
+      icon: "DollarSign"
+    },
+    {
+      title: "Version Controlled",
+      description: "Hit is completely driven from a JSON config file that's committed to your project's git repo, allowing team sharing and peer-reviewed changes.",
+      icon: "GitMerge"
+    },
+    {
+      title: "Command-line Integration",
+      description: "Combine hit commands with the plethora of command-line tools you already use in your workflow, from jq to bash scripts.",
+      icon: "Terminal"
+    },
+    {
+      title: "Post-processing Freedom",
+      description: "Write post-response scripts in any language or tool installed on your machine, not just the one supported by the API client.",
+      icon: "Code"
+    }
+  ],
+  examples: [
+    {
+      title: "Format JSON as Tables",
+      command: "hit run list-users | jq -r '.[] | [.id, .name, .email] | @tsv' | column -t",
+      description: "Pipe JSON responses to jq to convert them into readable tabular format."
+    },
+    {
+      title: "Batch Processing",
+      command: "for id in 1 2 3 4 5; do hit run get-user --user-id $id; done",
+      description: "Easily invoke endpoints in a loop with different parameters using simple bash scripts."
+    },
+    {
+      title: "History Navigation",
+      command: "ctrl+r",
+      description: "Use your shell's reverse search to quickly find and re-run previous hit commands."
+    }
+  ]
+};
+
 // Header Content
 export const headerSection = {
   navLinks: [
     { text: "Features", link: "#features" },
     { text: "Installation", link: "#installation" },
-    { text: "Usage", link: "#usage" }
+    { text: "Usage", link: "#usage" },
+    { text: "Comparison", link: "#comparison" }
   ],
   githubLink: "https://github.com/meshde/hit-cli"
 };

@@ -4,14 +4,17 @@ import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
 import InstallationSection from '@/components/InstallationSection';
 import UsageExamplesSection from '@/components/UsageExamplesSection';
+import ComparisonSection from '@/components/ComparisonSection';
 import GetStartedSection from '@/components/GetStartedSection';
 import Footer from '@/components/Footer';
 
 const Home: React.FC = () => {
   // Highlight code blocks when component mounts
   useEffect(() => {
-    if (window.Prism) {
-      window.Prism.highlightAll();
+    // Access Prism from the global window object
+    // Using this approach to avoid TypeScript errors with the injected Prism library
+    if (typeof window !== 'undefined' && 'Prism' in window) {
+      (window as any).Prism.highlightAll();
     }
   }, []);
 
@@ -23,6 +26,7 @@ const Home: React.FC = () => {
         <FeaturesSection />
         <InstallationSection />
         <UsageExamplesSection />
+        <ComparisonSection />
         <GetStartedSection />
       </main>
       <Footer />
