@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center mb-4">
               <span className="text-2xl font-bold text-[#14B8A6]">hit</span>
-              <span className="ml-1 text-[#F9FAFB] animate-[cursor_1s_step-start_infinite]">_</span>
+              <span className="ml-1 text-[#F9FAFB] animate-[cursor_1s_step-start_infinite] hidden sm:inline">_</span>
             </Link>
             <p className="text-gray-400 mb-6 max-w-md">
               {footerSection.description}
