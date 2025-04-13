@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { Github } from 'lucide-react';
+import { headerSection } from '../content';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,12 +29,19 @@ const Header: React.FC = () => {
           
           <nav className="flex">
             <ul className="flex space-x-4 sm:space-x-8">
-              <li><a href="#features" className="text-sm text-gray-300 hover:text-[#14B8A6] transition">Features</a></li>
-              <li><a href="#installation" className="text-sm text-gray-300 hover:text-[#14B8A6] transition">Installation</a></li>
-              <li><a href="#usage" className="text-sm text-gray-300 hover:text-[#14B8A6] transition">Usage</a></li>
+              {headerSection.navLinks.map((link, index) => (
+                <li key={index}>
+                  <a 
+                    href={link.link} 
+                    className="text-sm text-gray-300 hover:text-[#14B8A6] transition"
+                  >
+                    {link.text}
+                  </a>
+                </li>
+              ))}
               <li>
                 <a 
-                  href="https://github.com/meshde/hit-cli-issues" 
+                  href={headerSection.githubLink} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="flex items-center text-sm text-gray-300 hover:text-[#14B8A6] transition"

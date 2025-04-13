@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'wouter';
 import { Github, Twitter } from 'lucide-react';
+import { footerSection } from '../content';
 
 const Footer: React.FC = () => {
   return (
@@ -13,13 +14,13 @@ const Footer: React.FC = () => {
               <span className="ml-1 text-[#F9FAFB] animate-[cursor_1s_step-start_infinite]">_</span>
             </Link>
             <p className="text-gray-400 mb-6 max-w-md">
-              A productivity-focused command-line API client that converts API endpoints into simple commands.
+              {footerSection.description}
             </p>
             <div className="flex space-x-4">
-              <a href="https://github.com/meshde/hit-cli-issues" className="text-gray-400 hover:text-[#14B8A6] transition" target="_blank" rel="noopener noreferrer">
+              <a href={footerSection.socialLinks.github} className="text-gray-400 hover:text-[#14B8A6] transition" target="_blank" rel="noopener noreferrer">
                 <Github className="w-6 h-6" />
               </a>
-              <a href="https://twitter.com/meshde" className="text-gray-400 hover:text-[#14B8A6] transition" target="_blank" rel="noopener noreferrer">
+              <a href={footerSection.socialLinks.twitter} className="text-gray-400 hover:text-[#14B8A6] transition" target="_blank" rel="noopener noreferrer">
                 <Twitter className="w-6 h-6" />
               </a>
             </div>
@@ -28,24 +29,40 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-gray-200">Quick Links</h3>
             <ul className="space-y-2">
-              <li><a href="#features" className="text-gray-400 hover:text-[#14B8A6] transition">Features</a></li>
-              <li><a href="#installation" className="text-gray-400 hover:text-[#14B8A6] transition">Installation</a></li>
-              <li><a href="#usage" className="text-gray-400 hover:text-[#14B8A6] transition">Usage Examples</a></li>
+              {footerSection.quickLinks.map((link, index) => (
+                <li key={index}>
+                  <a 
+                    href={link.link} 
+                    className="text-gray-400 hover:text-[#14B8A6] transition"
+                  >
+                    {link.text}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4 text-gray-200">Resources</h3>
             <ul className="space-y-2">
-              <li><a href="https://github.com/meshde/hit-cli-issues" className="text-gray-400 hover:text-[#14B8A6] transition" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
-              <li><a href="https://github.com/meshde/hit-cli-issues/releases" className="text-gray-400 hover:text-[#14B8A6] transition" target="_blank" rel="noopener noreferrer">Release Notes</a></li>
-              <li><a href="https://github.com/meshde/hit-cli-issues/issues" className="text-gray-400 hover:text-[#14B8A6] transition" target="_blank" rel="noopener noreferrer">Report Issues</a></li>
+              {footerSection.resources.map((resource, index) => (
+                <li key={index}>
+                  <a 
+                    href={resource.link} 
+                    className="text-gray-400 hover:text-[#14B8A6] transition" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    {resource.text}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} hit CLI. All rights reserved.</p>
+          <p className="text-gray-500 text-sm">{footerSection.copyright}</p>
         </div>
       </div>
     </footer>

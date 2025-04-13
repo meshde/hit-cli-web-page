@@ -7,9 +7,9 @@ import {
   Lock, 
   History 
 } from 'lucide-react';
-import { features } from '@/lib/features';
+import { featuresSection } from '../content';
 
-const FeatureCard: React.FC<typeof features[0]> = ({ icon, title, description }) => {
+const FeatureCard: React.FC<typeof featuresSection.features[0]> = ({ icon, title, description }) => {
   const IconComponent = (() => {
     switch(icon) {
       case 'Zap': return Zap;
@@ -39,15 +39,15 @@ const FeaturesSection: React.FC = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-[#F9FAFB]">
-            Why developers <span className="text-[#14B8A6]">love hit</span>
+            {featuresSection.title.split(' ').slice(0, -1).join(' ')} <span className="text-[#14B8A6]">{featuresSection.title.split(' ').slice(-1)}</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Designed by developers for developers, hit eliminates repetitive tasks and streamlines your workflow.
+            {featuresSection.subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
+          {featuresSection.features.map((feature, index) => (
             <FeatureCard key={index} {...feature} />
           ))}
         </div>
