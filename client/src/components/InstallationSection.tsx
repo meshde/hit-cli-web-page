@@ -4,7 +4,7 @@ import Terminal from './Terminal';
 
 const InstallationOption: React.FC<{
   title: string;
-  command: string;
+  command: React.ReactNode;
   description: string;
 }> = ({ title, command, description }) => {
   return (
@@ -38,33 +38,36 @@ const InstallationSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-8 mb-12">
           <InstallationOption 
-            title="Using npm"
-            command={<><span className="text-[#14B8A6]">npm</span> install -g hit-cli</>}
-            description="This is the recommended method for most users. Requires Node.js version 14 or higher."
-          />
-
-          <InstallationOption 
-            title="Using brew"
-            command={<><span className="text-[#14B8A6]">brew</span> install hit-cli</>}
-            description="Preferred installation method for macOS users with Homebrew package manager."
+            title="macOS with Homebrew"
+            command={<>
+              <span className="text-[#14B8A6]">brew</span> tap meshde/hit<br />
+              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">brew</span> install hit
+            </>}
+            description="The recommended installation method for macOS users with the Homebrew package manager."
           />
         </div>
 
         <div className="bg-[#1E293B]/70 rounded-lg p-6 border border-gray-800 mb-10">
           <h3 className="text-xl font-semibold mb-4 flex items-center">
             <Check className="w-5 h-5 mr-2 text-[#14B8A6]" />
-            Manual Installation
+            Coming Soon
           </h3>
-          <Terminal className="mb-4">
-            <code className="text-sm sm:text-base">
-              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">curl</span> -fsSL https://get.hit-cli.dev | sh
-            </code>
-          </Terminal>
-          <p className="text-gray-400 text-sm">
-            This script automatically detects your OS and downloads the appropriate binary. Verify the script before running it.
-          </p>
+          <div className="flex flex-col md:flex-row gap-6">
+            <div className="flex-1">
+              <h4 className="font-medium text-gray-200 mb-2">Linux Support</h4>
+              <p className="text-gray-400 text-sm">
+                Linux installation support is coming soon. We're working on providing binaries and package manager integration.
+              </p>
+            </div>
+            <div className="flex-1">
+              <h4 className="font-medium text-gray-200 mb-2">Windows Support</h4>
+              <p className="text-gray-400 text-sm">
+                Windows installation support is coming soon. We're working on providing executables and package manager integration.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="text-center">
@@ -75,7 +78,7 @@ const InstallationSection: React.FC = () => {
             <code className="text-sm sm:text-base">
               <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> --version
               <br />
-              <span className="text-[#9CA3AF]">hit v1.2.0</span>
+              <span className="text-[#9CA3AF]">hit v1.0.0</span>
             </code>
           </Terminal>
         </div>

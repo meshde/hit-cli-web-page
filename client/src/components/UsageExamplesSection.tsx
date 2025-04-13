@@ -4,63 +4,111 @@ import CodeBlock from './CodeBlock';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const UsageExamplesSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("project");
+  const [activeTab, setActiveTab] = useState("basic");
   
   const tabContent = {
-    project: (
+    basic: (
       <>
-        <h3 className="text-xl font-semibold mb-4">Project Initialization & Management</h3>
+        <h3 className="text-xl font-semibold mb-4">Basic API Commands</h3>
         
         <div className="mb-6">
-          <p className="text-gray-300 mb-2">Initialize a new project with templates:</p>
-          <Terminal className="mb-4">
-            <code className="text-sm sm:text-base">
-              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">init</span> my-project --template react
-              <br />
-              <span className="text-[#9CA3AF]">✓ Created new React project: my-project</span>
-              <br />
-              <span className="text-[#9CA3AF]">✓ Installed dependencies</span>
-              <br />
-              <span className="text-[#9CA3AF]">✓ Set up Git repository</span>
-            </code>
-          </Terminal>
-        </div>
-        
-        <div>
-          <p className="text-gray-300 mb-2">Run project tasks:</p>
+          <p className="text-gray-300 mb-2">Set up a simple API command in your config:</p>
+          <CodeBlock 
+            language="json"
+            code={`{
+  "commands": {
+    "list-users": {
+      "url": "https://your.api.com/users",
+      "method": "GET"
+    }
+  }
+}`}
+          />
+          <p className="text-gray-300 mt-4 mb-2">Then run the command:</p>
           <Terminal>
             <code className="text-sm sm:text-base">
-              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> dev
+              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users
               <br />
-              <span className="text-[#9CA3AF]">✓ Starting development server...</span>
+              <span className="text-[#9CA3AF]">[</span>
               <br />
-              <span className="text-[#9CA3AF]">✓ Server running at http://localhost:3000</span>
+              <span className="text-[#9CA3AF] ml-4">{"  {"} "id": 1, "name": "John Doe", "email": "john@example.com" {"}"},</span>
+              <br />
+              <span className="text-[#9CA3AF] ml-4">{"  {"} "id": 2, "name": "Jane Smith", "email": "jane@example.com" {"}"}</span>
+              <br />
+              <span className="text-[#9CA3AF]">]</span>
             </code>
           </Terminal>
         </div>
       </>
     ),
-    git: (
-      <div className="flex flex-col items-center justify-center py-10">
-        <div className="w-12 h-12 text-gray-500 mb-4 flex items-center justify-center">
-          <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-          </svg>
+    params: (
+      <>
+        <h3 className="text-xl font-semibold mb-4">Route Parameters</h3>
+        
+        <div className="mb-6">
+          <p className="text-gray-300 mb-2">Set up commands with route parameters:</p>
+          <CodeBlock 
+            language="json"
+            code={`{
+  "commands": {
+    "get-user": {
+      "url": "https://your.api.com/users/:userId",
+      "method": "GET"
+    }
+  }
+}`}
+          />
+          <p className="text-gray-300 mt-4 mb-2">Use with parameters:</p>
+          <Terminal>
+            <code className="text-sm sm:text-base">
+              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> get-user --user-id 47
+              <br />
+              <span className="text-[#9CA3AF]">{"{"} "id": 47, "name": "Alice Johnson", "email": "alice@example.com" {"}"}</span>
+            </code>
+          </Terminal>
         </div>
-        <p className="text-gray-400 text-center">Git workflow commands would go here.</p>
-        <p className="text-gray-500 text-sm text-center mt-2">Simplified Git commands for common workflows.</p>
-      </div>
+      </>
     ),
-    build: (
-      <div className="flex flex-col items-center justify-center py-10">
-        <div className="w-12 h-12 text-gray-500 mb-4 flex items-center justify-center">
-          <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-          </svg>
+    envs: (
+      <>
+        <h3 className="text-xl font-semibold mb-4">Environment Variables</h3>
+        
+        <div className="mb-6">
+          <p className="text-gray-300 mb-2">Define environments in your config:</p>
+          <CodeBlock 
+            language="json"
+            code={`{
+  "envs": {
+    "prod": {
+      "API_URL": "https://prod.api.com"
+    },
+    "dev": {
+      "API_URL": "https://dev.api.com"
+    }
+  },
+  "commands": {
+    "list-users": {
+      "url": "{{API_URL}}/users",
+      "method": "GET"
+    }
+  }
+}`}
+          />
+          <p className="text-gray-300 mt-4 mb-2">Switch between environments:</p>
+          <Terminal>
+            <code className="text-sm sm:text-base">
+              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">env</span> use dev
+              <br />
+              <span className="text-[#9CA3AF]">✓ Switched to dev environment</span>
+              <br />
+              <br />
+              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users
+              <br />
+              <span className="text-[#9CA3AF]">// This now calls https://dev.api.com/users</span>
+            </code>
+          </Terminal>
         </div>
-        <p className="text-gray-400 text-center">Build and deploy commands would go here.</p>
-        <p className="text-gray-500 text-sm text-center mt-2">Streamlined deployment to various platforms.</p>
-      </div>
+      </>
     )
   };
 
@@ -72,116 +120,100 @@ const UsageExamplesSection: React.FC = () => {
             Usage <span className="text-[#14B8A6]">Examples</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            See how hit can transform your development workflow with these common use cases.
+            See how hit makes your API workflows simpler with these common use cases.
           </p>
         </div>
 
         {/* Example Tabs */}
         <div className="mb-12">
-          <Tabs defaultValue="project" value={activeTab} onValueChange={setActiveTab}>
+          <Tabs defaultValue="basic" value={activeTab} onValueChange={setActiveTab}>
             <div className="border-b border-gray-800 mb-6">
               <TabsList className="bg-transparent">
                 <TabsTrigger 
-                  value="project"
+                  value="basic"
                   className="data-[state=active]:border-[#14B8A6] data-[state=active]:text-[#14B8A6] data-[state=active]:border-b-2 border-b-2 border-transparent rounded-none bg-transparent"
                 >
-                  Project Management
+                  Basic Commands
                 </TabsTrigger>
                 <TabsTrigger 
-                  value="git"
+                  value="params"
                   className="data-[state=active]:border-[#14B8A6] data-[state=active]:text-[#14B8A6] data-[state=active]:border-b-2 border-b-2 border-transparent rounded-none bg-transparent"
                 >
-                  Git Workflows
+                  Route Parameters
                 </TabsTrigger>
                 <TabsTrigger 
-                  value="build"
+                  value="envs"
                   className="data-[state=active]:border-[#14B8A6] data-[state=active]:text-[#14B8A6] data-[state=active]:border-b-2 border-b-2 border-transparent rounded-none bg-transparent"
                 >
-                  Build & Deploy
+                  Environments
                 </TabsTrigger>
               </TabsList>
             </div>
 
             <div className="bg-[#1E293B]/70 rounded-lg p-4 sm:p-6 border border-gray-800">
-              <TabsContent value="project">
-                {tabContent.project}
+              <TabsContent value="basic">
+                {tabContent.basic}
               </TabsContent>
-              <TabsContent value="git">
-                {tabContent.git}
+              <TabsContent value="params">
+                {tabContent.params}
               </TabsContent>
-              <TabsContent value="build">
-                {tabContent.build}
+              <TabsContent value="envs">
+                {tabContent.envs}
               </TabsContent>
             </div>
           </Tabs>
         </div>
 
         <div className="bg-[#1E293B]/70 rounded-lg p-6 border border-gray-800 mb-12">
-          <h3 className="text-xl font-semibold mb-4">Create Custom Commands</h3>
-          <p className="text-gray-300 mb-4">Define your own shortcut commands in a configuration file:</p>
+          <h3 className="text-xl font-semibold mb-4">Inspecting Responses</h3>
+          <p className="text-gray-300 mb-4">View full API responses including headers and status codes:</p>
           
-          <div className="mb-6">
-            <CodeBlock 
-              language="javascript"
-              code={`// .hitrc.js
-
-module.exports = {
-  commands: {
-    "deploy": "npm run build && aws s3 sync dist/ s3://my-bucket",
-    "refresh": "git pull && npm install && npm run build",
-    "cleanup": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
-  }
-}`}
-            />
-          </div>
-          
-          <p className="text-gray-300 mb-2">Then use your custom commands:</p>
           <Terminal>
             <code className="text-sm sm:text-base">
-              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">deploy</span>
+              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users
               <br />
-              <span className="text-[#9CA3AF]">✓ Running custom command: deploy</span>
+              <span className="text-[#9CA3AF]">[...] // Response body</span>
+              <br /><br />
+              <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">last</span> view
               <br />
-              <span className="text-[#9CA3AF]">✓ Build completed successfully</span>
+              <span className="text-[#9CA3AF]">Status: 200 OK</span>
               <br />
-              <span className="text-[#9CA3AF]">✓ Deployed to S3</span>
+              <span className="text-[#9CA3AF]">Headers:</span>
+              <br />
+              <span className="text-[#9CA3AF] ml-4">content-type: application/json</span>
+              <br />
+              <span className="text-[#9CA3AF] ml-4">cache-control: max-age=0, private, must-revalidate</span>
+              <br />
+              <span className="text-[#9CA3AF]">Body:</span>
+              <br />
+              <span className="text-[#9CA3AF] ml-4">[...]</span>
             </code>
           </Terminal>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-[#1E293B]/70 rounded-lg p-6 border border-gray-800">
-            <h3 className="text-xl font-semibold mb-4">Quick Project Stats</h3>
+            <h3 className="text-xl font-semibold mb-4">Team Collaboration</h3>
+            <p className="text-gray-300 mb-4">Share API configuration with your team via Git:</p>
             <Terminal>
               <code className="text-sm sm:text-base">
-                <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">stats</span>
+                <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">git</span> add .hit/
                 <br />
-                <span className="text-[#9CA3AF]">Project Statistics:</span>
+                <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">git</span> commit -m "Add API config"
                 <br />
-                <span className="text-[#9CA3AF]">- Lines of code: 12,435</span>
-                <br />
-                <span className="text-[#9CA3AF]">- Files: 86</span>
-                <br />
-                <span className="text-[#9CA3AF]">- Commits: 214</span>
-                <br />
-                <span className="text-[#9CA3AF]">- Contributors: 5</span>
+                <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">git</span> push
               </code>
             </Terminal>
           </div>
 
           <div className="bg-[#1E293B]/70 rounded-lg p-6 border border-gray-800">
-            <h3 className="text-xl font-semibold mb-4">Multi-Repository Operations</h3>
+            <h3 className="text-xl font-semibold mb-4">Authentication</h3>
+            <p className="text-gray-300 mb-4">Add authentication to your requests:</p>
             <Terminal>
               <code className="text-sm sm:text-base">
-                <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">foreach</span> "git pull"
+                <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">env</span> set API_TOKEN "my-secret-token"
                 <br />
-                <span className="text-[#9CA3AF]">Running command in all repositories:</span>
-                <br />
-                <span className="text-[#9CA3AF]">✓ frontend: Already up to date</span>
-                <br />
-                <span className="text-[#9CA3AF]">✓ backend: Pulled 2 files</span>
-                <br />
-                <span className="text-[#9CA3AF]">✓ docs: Pulled 5 files</span>
+                <span className="text-[#9CA3AF]">✓ Set API_TOKEN in current environment</span>
               </code>
             </Terminal>
           </div>

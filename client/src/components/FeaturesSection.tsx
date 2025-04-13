@@ -1,11 +1,11 @@
 import React from 'react';
 import { 
   Zap, 
-  PaintBucket, 
+  GitBranch, 
   Terminal as TerminalIcon, 
-  MonitorSmartphone, 
-  Shield, 
-  Package 
+  Share2, 
+  Lock, 
+  History 
 } from 'lucide-react';
 import { features } from '@/lib/features';
 
@@ -13,11 +13,11 @@ const FeatureCard: React.FC<typeof features[0]> = ({ icon, title, description })
   const IconComponent = (() => {
     switch(icon) {
       case 'Zap': return Zap;
-      case 'PaintBucket': return PaintBucket;
+      case 'GitBranch': return GitBranch;
       case 'Terminal': return TerminalIcon;
-      case 'MonitorSmartphone': return MonitorSmartphone;
-      case 'Shield': return Shield;
-      case 'Package': return Package;
+      case 'Share2': return Share2;
+      case 'Lock': return Lock;
+      case 'History': return History;
       default: return Zap;
     }
   })();

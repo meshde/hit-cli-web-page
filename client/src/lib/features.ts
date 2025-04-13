@@ -1,32 +1,32 @@
 export const features = [
   {
     icon: 'Zap',
-    title: 'Lightning Fast',
-    description: 'Instant execution with minimal overhead. Get results in milliseconds, not seconds.'
+    title: 'API Commands',
+    description: 'Convert API endpoints into simple command-line commands for quick access and execution.'
   },
   {
-    icon: 'PaintBucket',
-    title: 'Customizable Workflows',
-    description: 'Create and save your own command sequences to automate repetitive development tasks.'
+    icon: 'GitBranch',
+    title: 'Environment Variables',
+    description: 'Easily switch between different environments (production, development, staging) with a single command.'
   },
   {
     icon: 'Terminal',
-    title: 'Smart Suggestions',
-    description: 'Contextual command suggestions based on your project structure and usage patterns.'
+    title: 'Route Parameters',
+    description: 'Use route params and query params directly from the command line without modifying config files.'
   },
   {
-    icon: 'MonitorSmartphone',
-    title: 'Cross-Platform',
-    description: 'Works seamlessly across macOS, Linux, and Windows. Same commands, same results.'
+    icon: 'Share2',
+    title: 'Team Sharing',
+    description: 'Share API configurations with your team via Git, ensuring everyone has the same setup.'
   },
   {
-    icon: 'Shield',
-    title: 'Secure by Default',
-    description: 'Sandboxed execution environment with permission controls for sensitive operations.'
+    icon: 'Lock',
+    title: 'Authentication Support',
+    description: 'Handle authentication tokens and credentials securely across different environments.'
   },
   {
-    icon: 'Package',
-    title: 'Plugin Ecosystem',
-    description: 'Extend functionality with community plugins or create your own to suit your workflow.'
+    icon: 'History',
+    title: 'Response Inspection',
+    description: 'Inspect full API responses including headers and status codes with the "hit last view" command.'
   }
 ];
