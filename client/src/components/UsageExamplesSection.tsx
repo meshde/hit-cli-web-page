@@ -93,6 +93,7 @@ const UsageExamplesSection: React.FC = () => {
         <h3 className="text-xl font-semibold mb-4">{usageExamplesSection.tabs.auth.description}</h3>
         
         <div className="mb-6">
+          <p className="text-gray-300 mb-2">Senstive environment variables can be set locally without having to commit the values to git and sharing with your team. </p>
           <p className="text-gray-300 mb-2">Configure commands with authentication headers:</p>
           <CodeBlock 
             language="json"
@@ -137,13 +138,13 @@ const UsageExamplesSection: React.FC = () => {
         {/* Example Tabs */}
         <div className="mb-12">
           <Tabs defaultValue="basic" value={activeTab} onValueChange={setActiveTab}>
-            <div className="border-b border-gray-800 mb-6">
-              <TabsList className="bg-transparent">
+            <div className="border-b border-gray-800 mb-6 overflow-x-auto pb-1">
+              <TabsList className="bg-transparent flex-wrap sm:flex-nowrap min-w-full">
                 {Object.entries(usageExamplesSection.tabs).map(([key, tab]) => (
                   <TabsTrigger 
                     key={key}
                     value={key}
-                    className="data-[state=active]:border-[#14B8A6] data-[state=active]:text-[#14B8A6] data-[state=active]:border-b-2 border-b-2 border-transparent rounded-none bg-transparent"
+                    className="data-[state=active]:border-[#14B8A6] data-[state=active]:text-[#14B8A6] data-[state=active]:border-b-2 border-b-2 border-transparent rounded-none bg-transparent whitespace-nowrap flex-shrink-0 px-3"
                   >
                     {tab.title}
                   </TabsTrigger>

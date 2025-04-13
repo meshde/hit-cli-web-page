@@ -158,8 +158,8 @@ export const usageExamplesSection = {
       output: ["✓ Switched to dev environment", "// This now calls https://dev.api.com/users"]
     },
     auth: {
-      title: "Authentication",
-      description: "Authentication Support",
+      title: "Sensitive Variables",
+      description: "Sensitive Environment Variables",
       configExample: `{
   "commands": {
     "get-profile": {
@@ -171,7 +171,7 @@ export const usageExamplesSection = {
     }
   }
 }`,
-      commandExample: "hit env set API_TOKEN \"my-secret-token\"\n\nhit run get-profile",
+      commandExample: "hit ephenv set API_TOKEN \"my-secret-token\"\n\nhit run get-profile",
       output: ["✓ Set API_TOKEN in current environment", "{ \"id\": 123, \"name\": \"John Doe\", \"email\": \"john@example.com\", \"role\": \"admin\" }"]
     }
   },
