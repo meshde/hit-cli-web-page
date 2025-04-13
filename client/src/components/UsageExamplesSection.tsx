@@ -139,12 +139,12 @@ const UsageExamplesSection: React.FC = () => {
         <div className="mb-12">
           <Tabs defaultValue="basic" value={activeTab} onValueChange={setActiveTab}>
             <div className="border-b border-gray-800 mb-6 overflow-x-auto pb-1">
-              <TabsList className="bg-transparent flex-wrap sm:flex-nowrap min-w-full">
+              <TabsList className="bg-transparent flex-nowrap min-w-max inline-flex w-full">
                 {Object.entries(usageExamplesSection.tabs).map(([key, tab]) => (
                   <TabsTrigger 
                     key={key}
                     value={key}
-                    className="data-[state=active]:border-[#14B8A6] data-[state=active]:text-[#14B8A6] data-[state=active]:border-b-2 border-b-2 border-transparent rounded-none bg-transparent whitespace-nowrap flex-shrink-0 px-3"
+                    className="data-[state=active]:border-[#14B8A6] data-[state=active]:text-[#14B8A6] data-[state=active]:border-b-2 border-b-2 border-transparent rounded-none bg-transparent whitespace-nowrap flex-shrink-0 px-4 py-2"
                   >
                     {tab.title}
                   </TabsTrigger>
