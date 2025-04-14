@@ -110,7 +110,7 @@ const UsageExamplesSection: React.FC = () => {
           <Terminal>
             <code className="text-sm sm:text-base">
               {usageExamplesSection.tabs.envs.commandExample.split('\n\n').map((cmd, idx) => (
-                <React.Fragment key={idx}>
+                <div key={idx}>
                   <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">
                     {cmd.split(' ').slice(0, 1)}
                   </span> <span className="text-[#8B5CF6]">
@@ -121,7 +121,7 @@ const UsageExamplesSection: React.FC = () => {
                     <span className="text-[#9CA3AF]">{usageExamplesSection.tabs.envs.output[idx]}<br /></span>
                   )}
                   {idx === 0 && <br />}
-                </React.Fragment>
+                </div>
               ))}
             </code>
           </Terminal>
@@ -143,7 +143,7 @@ const UsageExamplesSection: React.FC = () => {
           <Terminal>
             <code className="text-sm sm:text-base">
               {usageExamplesSection.tabs.auth.commandExample.split('\n\n').map((cmd, idx) => (
-                <React.Fragment key={idx}>
+                <div key={idx}>
                   <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">
                     {cmd.split(' ').slice(0, 1)}
                   </span> <span className="text-[#8B5CF6]">
@@ -154,7 +154,7 @@ const UsageExamplesSection: React.FC = () => {
                     <span className="text-[#9CA3AF]">{usageExamplesSection.tabs.auth.output[idx]}<br /></span>
                   )}
                   {idx === 0 && <br />}
-                </React.Fragment>
+                </div>
               ))}
             </code>
           </Terminal>
@@ -239,7 +239,7 @@ const UsageExamplesSection: React.FC = () => {
           <Terminal>
             <code className="text-sm sm:text-base">
               {usageExamplesSection.responsesSection.command.split('\n\n').map((cmd, cmdIdx) => (
-                <React.Fragment key={cmdIdx}>
+                <div key={cmdIdx}>
                   <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">
                     {cmd.split(' ').slice(0, 1)}
                   </span> <span className="text-[#8B5CF6]">
@@ -247,20 +247,20 @@ const UsageExamplesSection: React.FC = () => {
                   </span> {cmd.split(' ').slice(2).join(' ')}
                   <br />
                   {cmdIdx === 0 && (
-                    <>
+                    <div>
                       <span className="text-[#9CA3AF]">{usageExamplesSection.responsesSection.output[0]}</span>
                       <br /><br />
-                    </>
+                    </div>
                   )}
-                </React.Fragment>
+                </div>
               ))}
               {usageExamplesSection.responsesSection.output.slice(1).map((line, idx) => (
-                <React.Fragment key={idx}>
+                <div key={idx}>
                   <span className={`text-[#9CA3AF] ${line.startsWith('content-type') || line.startsWith('cache-control') ? 'ml-4' : ''}`}>
                     {line}
                   </span>
                   <br />
-                </React.Fragment>
+                </div>
               ))}
             </code>
           </Terminal>

@@ -32,7 +32,7 @@ const HeroSection: React.FC = () => {
         {/* Terminal Demo */}
         <Terminal className="max-w-3xl mx-auto">
           {heroSection.terminalExamples.map((example, idx) => (
-            <React.Fragment key={idx}>
+            <div key={idx}>
               {idx > 0 && <p className="mt-2"></p>}
               <p>
                 <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">
@@ -46,7 +46,7 @@ const HeroSection: React.FC = () => {
                   {line}
                 </p>
               ))}
-            </React.Fragment>
+            </div>
           ))}
         </Terminal>
       </div>
