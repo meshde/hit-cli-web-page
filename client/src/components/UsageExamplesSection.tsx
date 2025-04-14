@@ -273,12 +273,12 @@ const UsageExamplesSection: React.FC = () => {
             <Terminal>
               <code className="text-sm sm:text-base">
                 {usageExamplesSection.teamSection.commands.map((cmd, idx) => (
-                  <React.Fragment key={idx}>
+                  <div key={idx}>
                     <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">
                       {cmd.split(' ').slice(0, 1)}
                     </span> {cmd.split(' ').slice(1).join(' ')}
                     <br />
-                  </React.Fragment>
+                  </div>
                 ))}
               </code>
             </Terminal>

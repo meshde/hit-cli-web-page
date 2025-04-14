@@ -36,8 +36,8 @@ const ComparisonSection: React.FC = () => {
         {/* Advantages Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {comparisonSection.advantages.map((advantage, idx) => (
-            <div key={idx} className="bg-[#1E293B]/70 rounded-lg p-6 border border-gray-800 flex">
-              <div className="w-12 h-12 flex items-center justify-center bg-[#14B8A6]/10 rounded-md mr-4 flex-shrink-0">
+            <div key={idx} className="bg-[#1E293B]/70 rounded-lg p-6 border border-gray-800 flex flex-col sm:flex-row">
+              <div className="w-12 h-12 flex items-center justify-center bg-[#14B8A6]/10 rounded-md mb-4 sm:mb-0 sm:mr-4 flex-shrink-0">
                 {getIcon(advantage.icon)}
               </div>
               <div>
