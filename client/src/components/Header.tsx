@@ -41,9 +41,32 @@ const Header: React.FC = () => {
     };
   }, [isMenuOpen]);
   
-  // Close the mobile menu when clicking on a link
-  const handleLinkClick = () => {
-    setIsMenuOpen(false);
+  // Close the mobile menu when clicking on a link and handle smooth scrolling
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = e.currentTarget.getAttribute('href');
+    
+    // Only handle internal anchor links
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        // Close menu first
+        setIsMenuOpen(false);
+        
+        // Smooth scroll to the target after a small delay to allow menu to close
+        setTimeout(() => {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // Adjust for header height
+            behavior: 'smooth'
+          });
+        }, 300);
+      }
+    } else {
+      // For external links like GitHub, just close the menu
+      setIsMenuOpen(false);
+    }
   };
 
   return (
@@ -65,6 +88,7 @@ const Header: React.FC = () => {
                   <a 
                     href={link.link} 
                     className="text-sm text-gray-300 hover:text-[#14B8A6] transition"
+                    onClick={handleLinkClick}
                   >
                     {link.text}
                   </a>
@@ -92,7 +116,10 @@ const Header: React.FC = () => {
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-[#14B8A6] focus:outline-none"
               aria-controls="mobile-menu"
               aria-expanded={isMenuOpen}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={(e) => {
+                e.preventDefault();
+                setIsMenuOpen(!isMenuOpen);
+              }}
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
