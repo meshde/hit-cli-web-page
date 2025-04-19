@@ -19,7 +19,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#111827] text-[#F9FAFB]">
+    <div id="top" className="min-h-screen bg-[#111827] text-[#F9FAFB]">
       <Header />
       <main>
         <HeroSection />

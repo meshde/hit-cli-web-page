@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'wouter';
 import { Github, Menu, X } from 'lucide-react';
 import { headerSection } from '../content';
 
@@ -74,10 +73,10 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center">
+            <a href="#top" onClick={handleLinkClick} className="flex items-center">
               <span className="text-2xl font-bold text-[#14B8A6]">hit</span>
               <span className="ml-1 text-[#F9FAFB] animate-[cursor_1s_step-start_infinite] hidden sm:inline">_</span>
-            </Link>
+            </a>
           </div>
           
           {/* Desktop Navigation */}
@@ -108,7 +107,7 @@ const Header: React.FC = () => {
             </ul>
           </nav>
           
-          {/* Mobile menu button */}
+          {/* Mobile menu button - standalone button with no links inside */}
           <div className="md:hidden flex items-center">
             <button
               id="menu-button"
@@ -116,10 +115,7 @@ const Header: React.FC = () => {
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-[#14B8A6] focus:outline-none"
               aria-controls="mobile-menu"
               aria-expanded={isMenuOpen}
-              onClick={(e) => {
-                e.preventDefault();
-                setIsMenuOpen(!isMenuOpen);
-              }}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <span className="sr-only">Open main menu</span>
               {isMenuOpen ? (
