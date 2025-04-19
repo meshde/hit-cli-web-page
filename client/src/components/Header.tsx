@@ -122,7 +122,10 @@ const Header: React.FC = () => {
             ) : (
               <Menu 
                 className="h-6 w-6 text-gray-300 hover:text-[#14B8A6] cursor-pointer"
-                onClick={() => setIsMenuOpen(true)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsMenuOpen(true);
+                }}
               />
             )}
           </div>
