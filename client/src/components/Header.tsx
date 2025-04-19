@@ -87,7 +87,10 @@ const Header: React.FC = () => {
                   <a 
                     href={link.link} 
                     className="text-sm text-gray-300 hover:text-[#14B8A6] transition"
-                    onClick={handleLinkClick}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleLinkClick(e);
+                    }}
                   >
                     {link.text}
                   </a>
@@ -99,6 +102,7 @@ const Header: React.FC = () => {
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="flex items-center text-sm text-gray-300 hover:text-[#14B8A6] transition"
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <Github className="w-5 h-5 mr-1" />
                   GitHub
@@ -107,23 +111,20 @@ const Header: React.FC = () => {
             </ul>
           </nav>
           
-          {/* Mobile menu button - standalone button with no links inside */}
-          <div className="md:hidden flex items-center">
-            <button
-              id="menu-button"
-              type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-[#14B8A6] focus:outline-none"
-              aria-controls="mobile-menu"
-              aria-expanded={isMenuOpen}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              <span className="sr-only">Open main menu</span>
-              {isMenuOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
+          {/* Mobile menu button - with no nested elements that could capture events */}
+          <div className="md:hidden flex items-center z-20">
+            {/* Completely new implementation avoiding any nesting */}
+            {isMenuOpen ? (
+              <X 
+                className="h-6 w-6 text-gray-300 hover:text-[#14B8A6] cursor-pointer"
+                onClick={() => setIsMenuOpen(false)}
+              />
+            ) : (
+              <Menu 
+                className="h-6 w-6 text-gray-300 hover:text-[#14B8A6] cursor-pointer"
+                onClick={() => setIsMenuOpen(true)}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -141,7 +142,10 @@ const Header: React.FC = () => {
               key={index}
               href={link.link}
               className="block px-4 py-3 rounded-md text-base font-medium text-gray-300 hover:bg-[#1E293B] hover:text-[#14B8A6] transition"
-              onClick={handleLinkClick}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleLinkClick(e);
+              }}
             >
               {link.text}
             </a>
@@ -151,7 +155,10 @@ const Header: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center px-4 py-3 rounded-md text-base font-medium text-gray-300 hover:bg-[#1E293B] hover:text-[#14B8A6] transition"
-            onClick={handleLinkClick}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsMenuOpen(false);
+            }}
           >
             <Github className="w-5 h-5 mr-2" />
             GitHub
