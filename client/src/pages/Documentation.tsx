@@ -23,7 +23,8 @@ const Documentation: React.FC = () => {
               <nav className="space-y-1">
                 <a href="#introduction" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Introduction</a>
                 <a href="#installation" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Installation</a>
-                <a href="#basic-usage" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Basic Usage</a>
+                <a href="#getting-started" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Getting Started</a>
+                <a href="#usage" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Usage</a>
                 <a href="#route-params" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Route Parameters</a>
                 <a href="#environment-variables" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Environment Variables</a>
                 <a href="#ephemeral-environment-variables" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Ephemeral Environment Variables</a>
@@ -80,14 +81,42 @@ const Documentation: React.FC = () => {
                 <p>brew install hit</p>
               </Terminal>
 
-              <h3 className="text-2xl font-bold text-[#F9FAFB] mt-8 mb-4">Linux & Windows</h3>
+              <h3 className="text-2xl font-bold text-[#F9FAFB] mt-8 mb-4">Linux</h3>
+              <p className="text-gray-300 leading-relaxed">
+                Support coming soon!
+              </p>
+
+              <h3 className="text-2xl font-bold text-[#F9FAFB] mt-8 mb-4">Windows</h3>
               <p className="text-gray-300 leading-relaxed">
                 Support coming soon!
               </p>
           </section>
 
-          <section id="basic-usage">
-              <h2 className="text-3xl font-bold text-[#F9FAFB] mt-16 mb-6">Basic Usage</h2>
+          <section id="getting-started">
+              <h2 className="text-3xl font-bold text-[#F9FAFB] mt-16 mb-6">Getting Started</h2>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                <code>hit</code> works based on the config present in the current working directory. Specifically, the <code>.hit/config.json</code> file present in the current working directory. You can either build your config from scratch or generate one based on a swagger file.
+              </p>
+
+              <h3 className="text-2xl font-bold text-[#F9FAFB] mt-8 mb-4">BYOC (Build Your Own Config)</h3>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                Running <code>hit</code> in any directory would set up a basic hit config file. Follow the instructions and examples under the Usage section below to add in your commands.
+              </p>
+
+              <h3 className="text-2xl font-bold text-[#F9FAFB] mt-8 mb-4">Swagger Import</h3>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                If you have a swagger file or any other OpenAPI spec file documenting the API endpoints on your system, then you can generate hit config to work with those endpoints by running:
+              </p>
+              <Terminal>
+                <p>hit import &lt;path to swagger file&gt;</p>
+              </Terminal>
+              <p className="text-gray-300 leading-relaxed mt-4 mb-4">
+                This command will generate the corresponding <code>.hit/config.json</code> file in the current working directory.
+              </p>
+          </section>
+
+          <section id="usage">
+              <h2 className="text-3xl font-bold text-[#F9FAFB] mt-16 mb-6">Usage</h2>
               <p className="text-gray-300 leading-relaxed mb-4">
                 <code>hit</code> works based on the config present in the current working directory. Specifically, the <code>.hit/config.json</code> file present in the current working directory. The contents of the config define what commands are available to run.
               </p>
