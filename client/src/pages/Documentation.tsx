@@ -26,7 +26,7 @@ const Documentation: React.FC = () => {
                 rel="noopener noreferrer"
                 className="flex items-center px-6 py-3 bg-[#1E293B] rounded-md text-gray-300 hover:bg-[#2D3748] transition-colors"
               >
-                <GitHub className="mr-2 h-5 w-5" />
+                <Github className="mr-2 h-5 w-5" />
                 <span>View on GitHub</span>
               </a>
             </div>
@@ -144,7 +144,7 @@ const Documentation: React.FC = () => {
               Most software development setups have multiple environments where their APIs are deployed (production, staging, development, etc.). <code>hit</code> has the ability to define and use a set of variables that can have different values based on the currently active environment.
             </p>
             <p className="text-gray-300 leading-relaxed mb-4">
-              Environment variables can be used in the config by enclosing them in double curly braces (<code>{'{{'}}</code> <code>{'}}'}</code>) and can be defined in the config under the top level field <code>envs</code>.
+              Environment variables can be used in the config by enclosing them in double curly braces (<code>&#123;&#123;</code> <code>&#125;&#125;</code>) and can be defined in the config under the top level field <code>envs</code>.
             </p>
 
             <CodeBlock language="json" code={`{
@@ -177,7 +177,7 @@ const Documentation: React.FC = () => {
             </Terminal>
 
             <p className="text-gray-300 leading-relaxed mt-4 mb-4">
-              In the above example config, if the <code>prod</code> env is activated then all <code>run</code> commands using <code>{'{{API_URL}}'}</code> would use <code>https://prod.api.com</code> as the value for the variable.
+              In the above example config, if the <code>prod</code> env is activated then all <code>run</code> commands using <code>&#123;&#123;API_URL&#125;&#125;</code> would use <code>https://prod.api.com</code> as the value for the variable.
             </p>
 
             <div className="p-4 bg-[#1E293B] rounded-md mt-6 mb-6">
@@ -254,8 +254,8 @@ const Documentation: React.FC = () => {
             </p>
             <ol className="list-decimal pl-6 text-gray-300 leading-relaxed mb-4 space-y-2">
               <li>Expect a command-line option <code>--custom-request-id</code> for the value of the header <code>X-Request-Id</code>.</li>
-              <li>Use the value of <code>{'{{API_URL}}'}</code> from the active environment.</li>
-              <li>Use the value of <code>{'{{API_KEY}}'}</code> from what was set in the app settings using the <code>hit ephenv set</code> command.</li>
+              <li>Use the value of <code>&#123;&#123;API_URL&#125;&#125;</code> from the active environment.</li>
+              <li>Use the value of <code>&#123;&#123;API_KEY&#125;&#125;</code> from what was set in the app settings using the <code>hit ephenv set</code> command.</li>
             </ol>
           </section>
 
