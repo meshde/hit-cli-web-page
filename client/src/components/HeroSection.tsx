@@ -1,6 +1,7 @@
 import React from 'react';
 import Terminal from './Terminal';
 import { heroSection } from '../content';
+import { Link } from 'wouter';
 
 const HeroSection: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const HeroSection: React.FC = () => {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
             {heroSection.subtitle}
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
             <a 
               href="#installation" 
               className="px-8 py-3 bg-[#14B8A6] text-gray-900 font-medium rounded-md hover:bg-[#14B8A6]/90 transition"
@@ -26,6 +27,12 @@ const HeroSection: React.FC = () => {
             >
               {heroSection.secondaryButton}
             </a>
+            <Link 
+              href="/docs" 
+              className="px-8 py-3 bg-transparent border border-[#8B5CF6] text-[#8B5CF6] font-medium rounded-md hover:bg-[#8B5CF6]/10 transition"
+            >
+              {heroSection.docsButton}
+            </Link>
           </div>
         </div>
 

@@ -11,6 +11,7 @@ export const heroSection = {
   subtitle: "A productivity-focused command-line API client for engineering teams that transforms repetitive API operations into shared command-line commands.",
   primaryButton: "Get Started",
   secondaryButton: "View Examples",
+  docsButton: "Documentation",
   terminalExamples: [
     { command: "hit run list-users", 
       output: [
@@ -230,7 +231,8 @@ export const footerSection = {
   quickLinks: [
     { text: "Features", link: "#features" },
     { text: "Installation", link: "#installation" },
-    { text: "Usage Examples", link: "#usage" }
+    { text: "Usage Examples", link: "#usage" },
+    { text: "Documentation", link: "/docs" }
   ],
   resources: [
     { text: "GitHub Repository", link: "https://github.com/meshde/hit-cli" },
@@ -291,7 +293,8 @@ export const headerSection = {
     { text: "Features", link: "#features" },
     { text: "Installation", link: "#installation" },
     { text: "Usage", link: "#usage" },
-    { text: "Comparison", link: "#comparison" }
+    { text: "Comparison", link: "#comparison" },
+    { text: "Documentation", link: "/docs" }
   ],
   githubLink: "https://github.com/meshde/hit-cli"
 };
