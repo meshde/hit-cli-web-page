@@ -5,10 +5,27 @@ import Footer from '../components/Footer';
 import Terminal from '../components/Terminal';
 import CodeBlock from '../components/CodeBlock';
 
+// Custom styles for code elements
+const codeStyle = {
+  backgroundColor: '#1a2033',
+  padding: '0.2rem 0.4rem',
+  borderRadius: '0.25rem',
+  fontFamily: 'monospace',
+  fontSize: '0.875rem',
+  color: '#14B8A6',
+  whiteSpace: 'nowrap',
+};
+
 const Documentation: React.FC = () => {
   useEffect(() => {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
+    
+    // Apply styles to all code elements
+    const codeElements = document.querySelectorAll('code');
+    codeElements.forEach(el => {
+      Object.assign(el.style, codeStyle);
+    });
   }, []);
 
   return (
