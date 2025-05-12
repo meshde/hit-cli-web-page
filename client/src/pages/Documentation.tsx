@@ -290,14 +290,15 @@ const Documentation: React.FC = () => {
                 Such variables can then be used in the config similar to how environment variables are used by enclosing in double curly braces. For example:
               </p>
 
-              <CodeBlock language="json" code={`{
-  "commands": {
-    "list-users": {
-        "url": "{{API_URL}}/users?api_key={{API_KEY}}",
-        "method": "GET"
-    }
-  }
-}`} />
+              <CodeBlock language="json" code={
+"{\n" +
+"  \"commands\": {\n" +
+"    \"list-users\": {\n" +
+"        \"url\": \"{{API_URL}}/users?api_key={{API_KEY}}\",\n" +
+"        \"method\": \"GET\"\n" +
+"    }\n" +
+"  }\n" +
+"}"} />
           </section>
 
           <section id="request-headers">
@@ -314,19 +315,20 @@ const Documentation: React.FC = () => {
                 For example, with the config:
               </p>
 
-              <CodeBlock language="json" code={`{
-  "commands": {
-    "list-users": {
-        "url": "{{API_URL}}/users",
-        "method": "GET",
-        "headers": {
-          "X-Authorization-Key": "{{API_KEY}}",
-          "Origin": "{{API_URL}}",
-          "X-Request-Id": ":customRequestId"
-        }
-    }
-  }
-}`} />
+              <CodeBlock language="json" code={
+"{\n" +
+"  \"commands\": {\n" +
+"    \"list-users\": {\n" +
+"        \"url\": \"{{API_URL}}/users\",\n" +
+"        \"method\": \"GET\",\n" +
+"        \"headers\": {\n" +
+"          \"X-Authorization-Key\": \"{{API_KEY}}\",\n" +
+"          \"Origin\": \"{{API_URL}}\",\n" +
+"          \"X-Request-Id\": \":customRequestId\"\n" +
+"        }\n" +
+"    }\n" +
+"  }\n" +
+"}"} />
 
               <p className="text-gray-300 leading-relaxed mt-4 mb-4">
                 The headers used when invoking command <code>list-users</code> would:
@@ -350,28 +352,29 @@ const Documentation: React.FC = () => {
                 The config supports arbitrary level of nesting. For example, with a config like:
               </p>
 
-              <CodeBlock language="json" code={`{
-  "envs": {
-    "prod": {
-      "API_URL": "https://prod.api.com"
-    },
-    "dev": {
-      "API_URL": "https://dev.api.com"
-    }
-  },
-  "commands": {
-    "users": {
-      "list": {
-          "url": "{{API_URL}}/users",
-          "method": "GET"
-      },
-      "get": {
-          "url": "{{API_URL}}/users/:userId",
-          "method": "GET"
-      }
-    }
-  }
-}`} />
+              <CodeBlock language="json" code={
+"{\n" +
+"  \"envs\": {\n" +
+"    \"prod\": {\n" +
+"      \"API_URL\": \"https://prod.api.com\"\n" +
+"    },\n" +
+"    \"dev\": {\n" +
+"      \"API_URL\": \"https://dev.api.com\"\n" +
+"    }\n" +
+"  },\n" +
+"  \"commands\": {\n" +
+"    \"users\": {\n" +
+"      \"list\": {\n" +
+"          \"url\": \"{{API_URL}}/users\",\n" +
+"          \"method\": \"GET\"\n" +
+"      },\n" +
+"      \"get\": {\n" +
+"          \"url\": \"{{API_URL}}/users/:userId\",\n" +
+"          \"method\": \"GET\"\n" +
+"      }\n" +
+"    }\n" +
+"  }\n" +
+"}"} />
 
               <p className="text-gray-300 leading-relaxed mt-4 mb-4">
                 The available commands would be:
@@ -432,22 +435,23 @@ const Documentation: React.FC = () => {
                 For example, with a config like so:
               </p>
 
-              <CodeBlock language="json" code={`{
-  "commands": {
-    "login": {
-      "url": "https://authenticate.com/login",
-      "method": "POST",
-      "body": {
-        "user": ":user",
-        "pass": ":pass"
-      },
-      "postscript": {
-        "command": "bash",
-        "file": "set_token.sh"
-      }
-    }
-  }
-}`} />
+              <CodeBlock language="json" code={
+"{\n" +
+"  \"commands\": {\n" +
+"    \"login\": {\n" +
+"      \"url\": \"https://authenticate.com/login\",\n" +
+"      \"method\": \"POST\",\n" +
+"      \"body\": {\n" +
+"        \"user\": \":user\",\n" +
+"        \"pass\": \":pass\"\n" +
+"      },\n" +
+"      \"postscript\": {\n" +
+"        \"command\": \"bash\",\n" +
+"        \"file\": \"set_token.sh\"\n" +
+"      }\n" +
+"    }\n" +
+"  }\n" +
+"}"} />
 
               <p className="text-gray-300 leading-relaxed mt-4 mb-4">
                 And a postscript file <code>postscripts/set_token.sh</code> with contents like:
