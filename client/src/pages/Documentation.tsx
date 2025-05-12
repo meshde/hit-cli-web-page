@@ -179,18 +179,19 @@ const Documentation: React.FC = () => {
                 For example, the route to retrieve a user can be added to our previous config like so:
               </p>
 
-              <CodeBlock language="json" code={`{
-  "commands": {
-    "list-users": {
-        "url": "https://your.api.com/users",
-        "method": "GET"
-    },
-    "get-user": {
-        "url": "https://your.api.com/users/:userId",
-        "method": "GET"
-    }
-  }
-}`} />
+              <CodeBlock language="json" code={
+"{\n" +
+"  \"commands\": {\n" +
+"    \"list-users\": {\n" +
+"        \"url\": \"https://your.api.com/users\",\n" +
+"        \"method\": \"GET\"\n" +
+"    },\n" +
+"    \"get-user\": {\n" +
+"        \"url\": \"https://your.api.com/users/:userId\",\n" +
+"        \"method\": \"GET\"\n" +
+"    }\n" +
+"  }\n" +
+"}"} />
 
               <p className="text-gray-300 leading-relaxed mt-4 mb-4">
                 And this can be invoked as follows to retrieve user with id <code>47</code>:
@@ -204,10 +205,11 @@ const Documentation: React.FC = () => {
                 Something similar can be done if the user id were to be passed in the query params instead of route params:
               </p>
 
-              <CodeBlock language="json" code={`"get-user": {
-    "url": "https://your.api.com/users?id=:userId",
-    "method": "GET"
-}`} />
+              <CodeBlock language="json" code={
+"\"get-user\": {\n" +
+"    \"url\": \"https://your.api.com/users?id=:userId\",\n" +
+"    \"method\": \"GET\"\n" +
+"}"} />
 
               <Terminal>
                 <p>hit run get-user --user-id 47</p>
@@ -223,26 +225,27 @@ const Documentation: React.FC = () => {
                 Environment variables can be used in the config by enclosing them in double curly braces (<code>&#123;&#123;</code> <code>&#125;&#125;</code>) and can be defined in the config under the top level field <code>envs</code>.
               </p>
 
-              <CodeBlock language="json" code={`{
-  "envs": {
-    "prod": {
-      "API_URL": "https://prod.api.com"
-    },
-    "dev": {
-      "API_URL": "https://dev.api.com"
-    }
-  },
-  "commands": {
-    "list-users": {
-        "url": "{{API_URL}}/users",
-        "method": "GET"
-    },
-    "get-user": {
-        "url": "{{API_URL}}/users/:userId",
-        "method": "GET"
-    }
-  }
-}`} />
+              <CodeBlock language="json" code={
+"{\n" +
+"  \"envs\": {\n" +
+"    \"prod\": {\n" +
+"      \"API_URL\": \"https://prod.api.com\"\n" +
+"    },\n" +
+"    \"dev\": {\n" +
+"      \"API_URL\": \"https://dev.api.com\"\n" +
+"    }\n" +
+"  },\n" +
+"  \"commands\": {\n" +
+"    \"list-users\": {\n" +
+"        \"url\": \"{{API_URL}}/users\",\n" +
+"        \"method\": \"GET\"\n" +
+"    },\n" +
+"    \"get-user\": {\n" +
+"        \"url\": \"{{API_URL}}/users/:userId\",\n" +
+"        \"method\": \"GET\"\n" +
+"    }\n" +
+"  }\n" +
+"}"} />
 
               <p className="text-gray-300 leading-relaxed mt-4 mb-4">
                 An environment can be activated by running the command:
