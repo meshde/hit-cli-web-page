@@ -141,14 +141,15 @@ const Documentation: React.FC = () => {
                 For example, if the config looks something like:
               </p>
               
-              <CodeBlock language="json" code={`{
-  "commands": {
-    "list-users": {
-        "url": "https://your.api.com/users",
-        "method": "GET"
-    }
-  }
-}`} />
+              <CodeBlock language="json" code={
+"{\n" +
+"  \"commands\": {\n" +
+"    \"list-users\": {\n" +
+"        \"url\": \"https://your.api.com/users\",\n" +
+"        \"method\": \"GET\"\n" +
+"    }\n" +
+"  }\n" +
+"}"} />
 
               <p className="text-gray-300 leading-relaxed mt-4 mb-4">
                 Then this API call can be made like so:
