@@ -457,7 +457,8 @@ const Documentation: React.FC = () => {
                 And a postscript file <code>postscripts/set_token.sh</code> with contents like:
               </p>
 
-              <CodeBlock language="bash" code={`hit ephenv set API_TOKEN \`cat $HIT_RESPONSE_PATH\``} />
+              <CodeBlock language="bash" code={
+"hit ephenv set API_TOKEN $(cat $HIT_RESPONSE_PATH)"} />
 
               <p className="text-gray-300 leading-relaxed mt-4 mb-4">
                 Assuming the response of the login call would just be the API token as a string, running <code>hit run login --user username --password abcd1234</code> would fetch the token from the API endpoint and store it in the ephenv <code>API_TOKEN</code> for the rest of the hit commands to be able to use.
