@@ -3,26 +3,31 @@ import DocumentationLayout from '../../components/DocumentationLayout';
 import CodeBlock from '../../components/CodeBlock';
 import Terminal from '../../components/Terminal';
 
-const codeStyle = {
-  backgroundColor: '#1a2033',
-  padding: '0.2rem 0.4rem',
-  borderRadius: '0.25rem',
-  fontFamily: 'monospace',
-  fontSize: '0.875rem',
-  color: '#14B8A6',
-  whiteSpace: 'nowrap',
-};
+// Create a style for all code elements
+const codeStyle = `
+  background-color: #1a2033;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: #14B8A6;
+  white-space: nowrap;
+`;
 
 const EnvironmentVariables: React.FC = () => {
   useEffect(() => {
-    // Apply styles to all code elements
-    const codeElements = document.querySelectorAll('code');
-    codeElements.forEach(el => {
-      Object.assign(el.style, codeStyle);
-    });
+    // Create a style element
+    const styleEl = document.createElement('style');
+    styleEl.innerHTML = `code { ${codeStyle} }`;
+    document.head.appendChild(styleEl);
     
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
+    
+    // Clean up function
+    return () => {
+      document.head.removeChild(styleEl);
+    };
   }, []);
 
   return (
