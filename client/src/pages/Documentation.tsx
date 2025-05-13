@@ -41,14 +41,16 @@ const Documentation: React.FC = () => {
                 <a href="#introduction" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Introduction</a>
                 <a href="#installation" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Installation</a>
                 <a href="#getting-started" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Getting Started</a>
-                <a href="#usage" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Usage</a>
-                <a href="#route-params" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Route Parameters</a>
-                <a href="#environment-variables" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Environment Variables</a>
-                <a href="#ephemeral-environment-variables" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Ephemeral Environment Variables</a>
-                <a href="#request-headers" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Request Headers</a>
-                <a href="#nested-subcommands" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Nested Sub-Commands</a>
-                <a href="#inspecting-response" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Inspecting the Response</a>
-                <a href="#postscripts" className="block py-2 px-3 text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Postscripts</a>
+                <a href="#usage" className="block py-2 px-3 font-medium text-gray-300 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Usage</a>
+                <div className="pl-4 space-y-1 mt-1 border-l border-[#374151]">
+                  <a href="#route-params" className="block py-1.5 px-3 text-sm text-gray-400 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Route Parameters</a>
+                  <a href="#environment-variables" className="block py-1.5 px-3 text-sm text-gray-400 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Environment Variables</a>
+                  <a href="#ephemeral-environment-variables" className="block py-1.5 px-3 text-sm text-gray-400 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Ephemeral Environment Variables</a>
+                  <a href="#request-headers" className="block py-1.5 px-3 text-sm text-gray-400 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Request Headers</a>
+                  <a href="#nested-subcommands" className="block py-1.5 px-3 text-sm text-gray-400 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Nested Sub-Commands</a>
+                  <a href="#inspecting-response" className="block py-1.5 px-3 text-sm text-gray-400 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Inspecting the Response</a>
+                  <a href="#postscripts" className="block py-1.5 px-3 text-sm text-gray-400 hover:bg-[#2D3748] hover:text-[#14B8A6] rounded transition-colors">Postscripts</a>
+                </div>
               </nav>
               <div className="mt-6 pt-4 border-t border-[#374151]">
                 <a href="/" className="flex items-center text-[#14B8A6] hover:text-[#6EE7B7] transition-colors">
