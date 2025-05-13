@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'wouter';
 import DocumentationLayout from '../../components/DocumentationLayout';
 import Terminal from '../../components/Terminal';
 import CodeBlock from '../../components/CodeBlock';
@@ -64,15 +65,78 @@ const Usage: React.FC = () => {
           The following pages detail all the advanced features of the hit CLI that make it a powerful tool for API operations:
         </p>
         
-        <ul className="list-disc pl-6 text-gray-300 leading-relaxed mt-4 space-y-2">
-          <li>Route Parameters - For handling variable parts of API endpoints</li>
-          <li>Environment Variables - For managing different API environments</li>
-          <li>Ephemeral Environment Variables - For handling secrets</li>
-          <li>Request Headers - For customizing request headers</li>
-          <li>Nested Sub-Commands - For organizing complex API structures</li>
-          <li>Inspecting Response - For debugging and analyzing API responses</li>
-          <li>Postscripts - For automating actions after API calls</li>
+        <ul className="pl-6 text-gray-300 leading-relaxed mt-4 space-y-4">
+          <li className="group">
+            <Link href="/docs/route-params" className="inline-flex items-center text-[#14B8A6] hover:text-[#6EE7B7] font-medium transition-colors">
+              Route Parameters
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <p className="mt-1">For handling variable parts of API endpoints</p>
+          </li>
+          <li className="group">
+            <Link href="/docs/environment-variables" className="inline-flex items-center text-[#14B8A6] hover:text-[#6EE7B7] font-medium transition-colors">
+              Environment Variables
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <p className="mt-1">For managing different API environments</p>
+          </li>
+          <li className="group">
+            <Link href="/docs/ephemeral-environment-variables" className="inline-flex items-center text-[#14B8A6] hover:text-[#6EE7B7] font-medium transition-colors">
+              Ephemeral Environment Variables
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <p className="mt-1">For handling secrets</p>
+          </li>
+          <li className="group">
+            <Link href="/docs/request-headers" className="inline-flex items-center text-[#14B8A6] hover:text-[#6EE7B7] font-medium transition-colors">
+              Request Headers
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <p className="mt-1">For customizing request headers</p>
+          </li>
+          <li className="group">
+            <Link href="/docs/nested-subcommands" className="inline-flex items-center text-[#14B8A6] hover:text-[#6EE7B7] font-medium transition-colors">
+              Nested Sub-Commands
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <p className="mt-1">For organizing complex API structures</p>
+          </li>
+          <li className="group">
+            <Link href="/docs/inspecting-response" className="inline-flex items-center text-[#14B8A6] hover:text-[#6EE7B7] font-medium transition-colors">
+              Inspecting the Response
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <p className="mt-1">For debugging and analyzing API responses</p>
+          </li>
+          <li className="group">
+            <Link href="/docs/postscripts" className="inline-flex items-center text-[#14B8A6] hover:text-[#6EE7B7] font-medium transition-colors">
+              Postscripts
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <p className="mt-1">For automating actions after API calls</p>
+          </li>
         </ul>
+        
+        <div className="p-4 bg-[#1E293B] rounded-md mt-8 mb-6">
+          <p className="text-gray-300 font-medium">
+            <span className="text-[#14B8A6] font-bold mr-2">Tip:</span> 
+            Click on any feature above to view detailed documentation and examples.
+          </p>
+        </div>
       </section>
     </DocumentationLayout>
   );

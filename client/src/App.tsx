@@ -8,6 +8,7 @@ import Installation from "./pages/docs/Installation";
 import GettingStarted from "./pages/docs/GettingStarted";
 import Usage from "./pages/docs/Usage";
 import RouteParams from "./pages/docs/RouteParams";
+import EnvironmentVariables from "./pages/docs/EnvironmentVariables";
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/docs/getting-started" component={GettingStarted} />
       <Route path="/docs/usage" component={Usage} />
       <Route path="/docs/route-params" component={RouteParams} />
+      <Route path="/docs/environment-variables" component={EnvironmentVariables} />
       <Route component={NotFound} />
     </Switch>
   );

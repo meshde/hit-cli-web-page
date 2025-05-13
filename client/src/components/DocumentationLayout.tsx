@@ -16,6 +16,25 @@ const DocumentationLayout: React.FC<DocumentationLayoutProps> = ({ children, tit
   const isActivePage = (path: string) => {
     return location === path;
   };
+  
+  // Get next and previous pages for navigation
+  const pages = [
+    { path: '/docs', title: 'Introduction' },
+    { path: '/docs/installation', title: 'Installation' },
+    { path: '/docs/getting-started', title: 'Getting Started' },
+    { path: '/docs/usage', title: 'Basic Usage' },
+    { path: '/docs/route-params', title: 'Route Parameters' },
+    { path: '/docs/environment-variables', title: 'Environment Variables' },
+    { path: '/docs/ephemeral-environment-variables', title: 'Ephemeral Environment Variables' },
+    { path: '/docs/request-headers', title: 'Request Headers' },
+    { path: '/docs/nested-subcommands', title: 'Nested Sub-Commands' },
+    { path: '/docs/inspecting-response', title: 'Inspecting the Response' },
+    { path: '/docs/postscripts', title: 'Postscripts' }
+  ];
+  
+  const currentPageIndex = pages.findIndex(page => page.path === location);
+  const prevPage = currentPageIndex > 0 ? pages[currentPageIndex - 1] : null;
+  const nextPage = currentPageIndex < pages.length - 1 ? pages[currentPageIndex + 1] : null;
 
   return (
     <div className="min-h-screen bg-[#111827] text-[#F9FAFB]">
@@ -116,11 +135,36 @@ const DocumentationLayout: React.FC<DocumentationLayoutProps> = ({ children, tit
             
             {children}
             
-            <div className="mt-12 pt-6 border-t border-[#374151] flex justify-between">
-              <div></div>
+            <div className="mt-12 pt-6 border-t border-[#374151] flex justify-between items-center">
+              {/* Previous page navigation */}
               <div>
-                <Link href="/docs" className="text-[#14B8A6] hover:text-[#6EE7B7]">Back to Documentation</Link>
+                {prevPage && (
+                  <Link href={prevPage.path} className="flex items-center text-[#14B8A6] hover:text-[#6EE7B7] transition-colors group">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                    <span>Previous: {prevPage.title}</span>
+                  </Link>
+                )}
               </div>
+              
+              {/* Next page navigation */}
+              <div>
+                {nextPage && (
+                  <Link href={nextPage.path} className="flex items-center text-[#14B8A6] hover:text-[#6EE7B7] transition-colors group">
+                    <span>Next: {nextPage.title}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                )}
+              </div>
+            </div>
+            
+            <div className="mt-6 text-center">
+              <Link href="/docs" className="text-gray-400 hover:text-[#14B8A6] text-sm">
+                Back to Documentation Home
+              </Link>
             </div>
           </div>
         </div>
