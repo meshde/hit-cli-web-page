@@ -226,7 +226,8 @@ export const footerSection = {
   description: "A team-focused command-line API client that transforms admin endpoints into shareable, documented commands - no more copy-pasting curl commands in Slack.",
   socialLinks: {
     github: "https://github.com/meshde/hit-cli",
-    twitter: "https://twitter.com/meshde"
+    twitter: "https://twitter.com/meshde",
+    discord: "https://discord.gg/pREx6bF6KN"
   },
   quickLinks: [
     { text: "Features", link: "#features" },
@@ -296,5 +297,6 @@ export const headerSection = {
     { text: "Comparison", link: "#comparison" },
     { text: "Documentation", link: "/docs" }
   ],
-  githubLink: "https://github.com/meshde/hit-cli"
+  githubLink: "https://github.com/meshde/hit-cli",
+  discordLink: "https://discord.gg/pREx6bF6KN"
 };
