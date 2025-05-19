@@ -2,24 +2,12 @@ import React, { useEffect } from 'react';
 import DocumentationLayout from '../../components/DocumentationLayout';
 import Terminal from '../../components/Terminal';
 import CodeBlock from '../../components/CodeBlock';
-
-const codeStyle = {
-  backgroundColor: '#1a2033',
-  padding: '0.2rem 0.4rem',
-  borderRadius: '0.25rem',
-  fontFamily: 'monospace',
-  fontSize: '0.875rem',
-  color: '#14B8A6',
-  whiteSpace: 'nowrap',
-};
+import { applyCodeStyles } from '../../lib/codeStyles';
 
 const EphemeralEnvironmentVariables: React.FC = () => {
   useEffect(() => {
-    // Apply styles to all code elements
-    const codeElements = document.querySelectorAll('code');
-    codeElements.forEach(el => {
-      Object.assign(el.style, codeStyle);
-    });
+    // Apply styles to inline code elements
+    applyCodeStyles();
     
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
@@ -54,7 +42,9 @@ const EphemeralEnvironmentVariables: React.FC = () => {
         </p>
         
         <Terminal>
-          <p>hit run list-users --api-key YOUR_API_KEY</p>
+          <code className="text-sm sm:text-base">
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users <span className="text-[#F59E0B]">--api-key</span> YOUR_API_KEY
+          </code>
         </Terminal>
         
         <p className="text-gray-300 leading-relaxed mt-4 mb-4">
