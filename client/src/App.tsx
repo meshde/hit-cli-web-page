@@ -9,6 +9,11 @@ import GettingStarted from "./pages/docs/GettingStarted";
 import Usage from "./pages/docs/Usage";
 import RouteParams from "./pages/docs/RouteParams";
 import EnvironmentVariables from "./pages/docs/EnvironmentVariables";
+import EphemeralEnvironmentVariables from "./pages/docs/EphemeralEnvironmentVariables";
+import RequestHeaders from "./pages/docs/RequestHeaders";
+import NestedSubcommands from "./pages/docs/NestedSubcommands";
+import InspectingResponse from "./pages/docs/InspectingResponse";
+import Postscripts from "./pages/docs/Postscripts";
 
 function Router() {
   return (
@@ -20,6 +25,11 @@ function Router() {
       <Route path="/docs/usage" component={Usage} />
       <Route path="/docs/route-params" component={RouteParams} />
       <Route path="/docs/environment-variables" component={EnvironmentVariables} />
+      <Route path="/docs/ephemeral-environment-variables" component={EphemeralEnvironmentVariables} />
+      <Route path="/docs/request-headers" component={RequestHeaders} />
+      <Route path="/docs/nested-subcommands" component={NestedSubcommands} />
+      <Route path="/docs/inspecting-response" component={InspectingResponse} />
+      <Route path="/docs/postscripts" component={Postscripts} />
       <Route component={NotFound} />
     </Switch>
   );
