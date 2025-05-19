@@ -2,24 +2,8 @@ import React, { useEffect } from 'react';
 import DocumentationLayout from '../../components/DocumentationLayout';
 import Terminal from '../../components/Terminal';
 
-const codeStyle = {
-  backgroundColor: '#1a2033',
-  padding: '0.2rem 0.4rem',
-  borderRadius: '0.25rem',
-  fontFamily: 'monospace',
-  fontSize: '0.875rem',
-  color: '#14B8A6',
-  whiteSpace: 'nowrap',
-};
-
 const GettingStarted: React.FC = () => {
   useEffect(() => {
-    // Apply styles to all code elements
-    const codeElements = document.querySelectorAll('code');
-    codeElements.forEach(el => {
-      Object.assign(el.style, codeStyle);
-    });
-    
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
@@ -41,7 +25,9 @@ const GettingStarted: React.FC = () => {
           If you have a swagger file or any other OpenAPI spec file documenting the API endpoints on your system, then you can generate hit config to work with those endpoints by running:
         </p>
         <Terminal>
-          <p>hit import &lt;path to swagger file&gt;</p>
+          <code className="text-sm sm:text-base">
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">import</span> &lt;path to swagger file&gt;
+          </code>
         </Terminal>
         <p className="text-gray-300 leading-relaxed mt-4 mb-4">
           This command will generate the corresponding <code>.hit/config.json</code> file in the current working directory.

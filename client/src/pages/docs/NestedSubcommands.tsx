@@ -3,24 +3,8 @@ import DocumentationLayout from '../../components/DocumentationLayout';
 import Terminal from '../../components/Terminal';
 import CodeBlock from '../../components/CodeBlock';
 
-const codeStyle = {
-  backgroundColor: '#1a2033',
-  padding: '0.2rem 0.4rem',
-  borderRadius: '0.25rem',
-  fontFamily: 'monospace',
-  fontSize: '0.875rem',
-  color: '#14B8A6',
-  whiteSpace: 'nowrap',
-};
-
 const NestedSubcommands: React.FC = () => {
   useEffect(() => {
-    // Apply styles to all code elements
-    const codeElements = document.querySelectorAll('code');
-    codeElements.forEach(el => {
-      Object.assign(el.style, codeStyle);
-    });
-    
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
@@ -77,23 +61,31 @@ const NestedSubcommands: React.FC = () => {
         </p>
         
         <Terminal>
-          <p># List all users</p>
-          <p>hit run users list</p>
-          <p></p>
-          <p># Get a specific user</p>
-          <p>hit run users get --user-id 123</p>
-          <p></p>
-          <p># List all posts for a user</p>
-          <p>hit run users posts list --user-id 123</p>
-          <p></p>
-          <p># Get a specific post from a user</p>
-          <p>hit run users posts get --user-id 123 --post-id 456</p>
-          <p></p>
-          <p># List all posts</p>
-          <p>hit run posts list</p>
-          <p></p>
-          <p># Get a specific post</p>
-          <p>hit run posts get --post-id 456</p>
+          <code className="text-sm sm:text-base">
+            <span className="text-gray-500"># List all users</span>
+            <br />
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> users list
+            <br /><br />
+            <span className="text-gray-500"># Get a specific user</span>
+            <br />
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> users get <span className="text-[#F59E0B]">--user-id</span> 123
+            <br /><br />
+            <span className="text-gray-500"># List all posts for a user</span>
+            <br />
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> users posts list <span className="text-[#F59E0B]">--user-id</span> 123
+            <br /><br />
+            <span className="text-gray-500"># Get a specific post from a user</span>
+            <br />
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> users posts get <span className="text-[#F59E0B]">--user-id</span> 123 <span className="text-[#F59E0B]">--post-id</span> 456
+            <br /><br />
+            <span className="text-gray-500"># List all posts</span>
+            <br />
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> posts list
+            <br /><br />
+            <span className="text-gray-500"># Get a specific post</span>
+            <br />
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> posts get <span className="text-[#F59E0B]">--post-id</span> 456
+          </code>
         </Terminal>
         
         <p className="text-gray-300 leading-relaxed mt-6 mb-4">
