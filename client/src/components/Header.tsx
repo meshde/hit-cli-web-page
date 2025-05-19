@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Menu, X } from 'lucide-react';
 import { headerSection } from '../content';
-import logoImage from '../assets/hit-logo.jpeg';
+import logoImage from '../assets/hit-logo.png';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
