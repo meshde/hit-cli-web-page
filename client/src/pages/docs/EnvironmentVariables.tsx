@@ -2,9 +2,13 @@ import React, { useEffect } from 'react';
 import DocumentationLayout from '../../components/DocumentationLayout';
 import CodeBlock from '../../components/CodeBlock';
 import Terminal from '../../components/Terminal';
+import { applyCodeStyles } from '../../lib/codeStyles';
 
 const EnvironmentVariables: React.FC = () => {
   useEffect(() => {
+    // Apply styles to inline code elements
+    applyCodeStyles();
+    
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
