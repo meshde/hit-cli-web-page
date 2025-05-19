@@ -41,9 +41,19 @@ const Header: React.FC = () => {
     };
   }, [isMenuOpen]);
   
+  // Check if we're on the documentation page
+  const isDocPage = window.location.pathname.includes('/docs');
+  
   // Close the mobile menu when clicking on a link and handle smooth scrolling
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const href = e.currentTarget.getAttribute('href');
+    
+    // If we're on docs page and link is an anchor, navigate to home page with that anchor
+    if (isDocPage && href && href.startsWith('#')) {
+      e.preventDefault();
+      window.location.href = '/' + href;
+      return;
+    }
     
     // Only handle internal anchor links
     if (href && href.startsWith('#')) {
