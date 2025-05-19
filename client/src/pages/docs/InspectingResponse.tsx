@@ -2,24 +2,12 @@ import React, { useEffect } from 'react';
 import DocumentationLayout from '../../components/DocumentationLayout';
 import Terminal from '../../components/Terminal';
 import CodeBlock from '../../components/CodeBlock';
-
-const codeStyle = {
-  backgroundColor: '#1a2033',
-  padding: '0.2rem 0.4rem',
-  borderRadius: '0.25rem',
-  fontFamily: 'monospace',
-  fontSize: '0.875rem',
-  color: '#14B8A6',
-  whiteSpace: 'nowrap',
-};
+import { applyCodeStyles } from '../../lib/codeStyles';
 
 const InspectingResponse: React.FC = () => {
   useEffect(() => {
-    // Apply styles to all code elements
-    const codeElements = document.querySelectorAll('code');
-    codeElements.forEach(el => {
-      Object.assign(el.style, codeStyle);
-    });
+    // Apply styles to inline code elements
+    applyCodeStyles();
     
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
@@ -71,11 +59,15 @@ ${jsonExample}`;
         </p>
         
         <Terminal>
-          <p>hit run list-users</p>
-          <p></p>
-          {jsonExample.split('\n').map((line, index) => (
-            <p key={index}>{line}</p>
-          ))}
+          <code className="text-sm sm:text-base">
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users
+            <br /><br />
+            {jsonExample.split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                <span className="text-[#9CA3AF]">{line}</span><br />
+              </React.Fragment>
+            ))}
+          </code>
         </Terminal>
         
         <h3 className="text-2xl font-bold text-[#F9FAFB] mt-8 mb-4">Verbose Mode</h3>
@@ -85,11 +77,15 @@ ${jsonExample}`;
         </p>
         
         <Terminal>
-          <p>hit run list-users --verbose</p>
-          <p></p>
-          {verboseExample.split('\n').map((line, index) => (
-            <p key={index}>{line}</p>
-          ))}
+          <code className="text-sm sm:text-base">
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users <span className="text-[#F59E0B]">--verbose</span>
+            <br /><br />
+            {verboseExample.split('\n').map((line, index) => (
+              <React.Fragment key={index}>
+                <span className="text-[#9CA3AF]">{line}</span><br />
+              </React.Fragment>
+            ))}
+          </code>
         </Terminal>
         
         <h3 className="text-2xl font-bold text-[#F9FAFB] mt-8 mb-4">JSON Path Filtering</h3>
@@ -99,9 +95,11 @@ ${jsonExample}`;
         </p>
         
         <Terminal>
-          <p>hit run list-users --json-path "$.users[0].name"</p>
-          <p></p>
-          <p>"John Doe"</p>
+          <code className="text-sm sm:text-base">
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users <span className="text-[#F59E0B]">--json-path</span> "$.users[0].name"
+            <br /><br />
+            <span className="text-[#9CA3AF]">"John Doe"</span>
+          </code>
         </Terminal>
         
         <p className="text-gray-300 leading-relaxed mt-4 mb-4">
@@ -109,12 +107,17 @@ ${jsonExample}`;
         </p>
         
         <Terminal>
-          <p>hit run list-users --json-path "$.users[*].name"</p>
-          <p></p>
-          <p>[</p>
-          <p>  "John Doe",</p>
-          <p>  "Jane Smith"</p>
-          <p>]</p>
+          <code className="text-sm sm:text-base">
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users <span className="text-[#F59E0B]">--json-path</span> "$.users[*].name"
+            <br /><br />
+            <span className="text-[#9CA3AF]">[</span>
+            <br />
+            <span className="text-[#9CA3AF] ml-4">"John Doe",</span>
+            <br />
+            <span className="text-[#9CA3AF] ml-4">"Jane Smith"</span>
+            <br />
+            <span className="text-[#9CA3AF]">]</span>
+          </code>
         </Terminal>
         
         <h3 className="text-2xl font-bold text-[#F9FAFB] mt-8 mb-4">Saving the Response to a File</h3>
@@ -124,9 +127,11 @@ ${jsonExample}`;
         </p>
         
         <Terminal>
-          <p>hit run list-users --output users.json</p>
-          <p></p>
-          <p>Response saved to users.json</p>
+          <code className="text-sm sm:text-base">
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users <span className="text-[#F59E0B]">--output</span> users.json
+            <br /><br />
+            <span className="text-[#9CA3AF]">Response saved to users.json</span>
+          </code>
         </Terminal>
         
         <div className="p-4 bg-[#1E293B] rounded-md mt-8 mb-6">
