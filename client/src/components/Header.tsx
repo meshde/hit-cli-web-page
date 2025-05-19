@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Menu, X } from 'lucide-react';
 import { headerSection } from '../content';
-import HitLogo from './HitLogo';
+import logoImage from '../assets/hit-logo-transparent.png';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -75,7 +75,11 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <a href="#top" onClick={handleLinkClick} className="flex items-center">
-              <HitLogo className="h-8 w-8 mr-2" />
+              <img 
+                src={logoImage} 
+                alt="Hit CLI Logo" 
+                className="h-8 mr-2"
+              />
               <span className="text-2xl font-bold text-[#14B8A6]">hit</span>
               <span className="ml-1 text-[#F9FAFB] animate-[cursor_1s_step-start_infinite] hidden sm:inline">_</span>
             </a>
