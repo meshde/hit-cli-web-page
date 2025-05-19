@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'wouter';
 import { Github, Twitter } from 'lucide-react';
 import { footerSection } from '../content';
+import logoImage from '../assets/hit-logo-transparent.png';
 
 const Footer: React.FC = () => {
   return (
@@ -10,6 +11,11 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center mb-4">
+              <img 
+                src={logoImage} 
+                alt="Hit CLI Logo" 
+                className="h-8 mr-2"
+              />
               <span className="text-2xl font-bold text-[#14B8A6]">hit</span>
               <span className="ml-1 text-[#F9FAFB] animate-[cursor_1s_step-start_infinite] hidden sm:inline">_</span>
             </Link>
