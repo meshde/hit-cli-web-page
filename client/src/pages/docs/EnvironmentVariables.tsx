@@ -3,24 +3,8 @@ import DocumentationLayout from '../../components/DocumentationLayout';
 import CodeBlock from '../../components/CodeBlock';
 import Terminal from '../../components/Terminal';
 
-const codeStyle = {
-  backgroundColor: '#1a2033',
-  padding: '0.2rem 0.4rem',
-  borderRadius: '0.25rem',
-  fontFamily: 'monospace',
-  fontSize: '0.875rem',
-  color: '#14B8A6',
-  whiteSpace: 'nowrap',
-};
-
 const EnvironmentVariables: React.FC = () => {
   useEffect(() => {
-    // Apply styles to all code elements
-    const codeElements = document.querySelectorAll('code');
-    codeElements.forEach(el => {
-      Object.assign(el.style, codeStyle);
-    });
-    
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
@@ -93,9 +77,13 @@ const EnvironmentVariables: React.FC = () => {
         </p>
         
         <Terminal>
-          <p>hit run list-users</p>
-          <p># or explicitly</p>
-          <p>hit run --env dev list-users</p>
+          <code className="text-sm sm:text-base">
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users
+            <br />
+            <span className="text-gray-500"># or explicitly</span>
+            <br />
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> <span className="text-[#F59E0B]">--env</span> dev list-users
+          </code>
         </Terminal>
         
         <p className="text-gray-300 leading-relaxed mt-4 mb-4">
@@ -103,7 +91,9 @@ const EnvironmentVariables: React.FC = () => {
         </p>
         
         <Terminal>
-          <p>hit run --env prod list-users</p>
+          <code className="text-sm sm:text-base">
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> <span className="text-[#F59E0B]">--env</span> prod list-users
+          </code>
         </Terminal>
         
         <div className="p-4 bg-[#1E293B] rounded-md mt-8 mb-6">
