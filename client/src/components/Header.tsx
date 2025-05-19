@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'wouter';
 import { Github, Menu, X } from 'lucide-react';
 import { headerSection } from '../content';
 import logoImage from '../assets/hit-logo-transparent.png';
@@ -6,6 +7,7 @@ import logoImage from '../assets/hit-logo-transparent.png';
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [location, setLocation] = useLocation();
 
   // Track scroll position to add background opacity when scrolled
   useEffect(() => {
@@ -42,40 +44,35 @@ const Header: React.FC = () => {
   }, [isMenuOpen]);
   
   // Check if we're on the documentation page
-  const isDocPage = window.location.pathname.includes('/docs');
+  const isDocPage = location.includes('/docs');
   
-  // Close the mobile menu when clicking on a link and handle smooth scrolling
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const href = e.currentTarget.getAttribute('href');
+  // Handle navigation for anchor links
+  const handleAnchorNavigation = (targetId: string) => {
+    setIsMenuOpen(false);
     
-    // If we're on docs page and link is an anchor, navigate to home page with that anchor
-    if (isDocPage && href && href.startsWith('#')) {
-      e.preventDefault();
-      window.location.href = '/' + href;
-      return;
-    }
-    
-    // Only handle internal anchor links
-    if (href && href.startsWith('#')) {
-      e.preventDefault();
-      const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
+    // If on docs page, first navigate to homepage
+    if (isDocPage) {
+      setLocation('/');
       
-      if (targetElement) {
-        // Close menu first
-        setIsMenuOpen(false);
-        
-        // Smooth scroll to the target after a small delay to allow menu to close
-        setTimeout(() => {
+      // Delay scrolling to let the navigation complete
+      setTimeout(() => {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
           window.scrollTo({
-            top: targetElement.offsetTop - 80, // Adjust for header height
+            top: targetElement.offsetTop - 80,
             behavior: 'smooth'
           });
-        }, 300);
-      }
+        }
+      }, 100);
     } else {
-      // For external links like GitHub, just close the menu
-      setIsMenuOpen(false);
+      // On homepage, just scroll to target
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
     }
   };
 
@@ -84,7 +81,7 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <a href="#top" onClick={handleLinkClick} className="flex items-center">
+            <Link href="/" className="flex items-center">
               <img 
                 src={logoImage} 
                 alt="Hit CLI Logo" 
@@ -92,7 +89,7 @@ const Header: React.FC = () => {
               />
               <span className="text-2xl font-bold text-[#14B8A6]">hit</span>
               <span className="ml-1 text-[#F9FAFB] animate-[cursor_1s_step-start_infinite] hidden sm:inline">_</span>
-            </a>
+            </Link>
           </div>
           
           {/* Desktop Navigation */}
@@ -100,16 +97,21 @@ const Header: React.FC = () => {
             <ul className="flex space-x-6">
               {headerSection.navLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.link} 
-                    className="text-sm text-gray-300 hover:text-[#14B8A6] transition"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleLinkClick(e);
-                    }}
-                  >
-                    {link.text}
-                  </a>
+                  {link.link.startsWith('#') ? (
+                    <button
+                      className="text-sm text-gray-300 hover:text-[#14B8A6] transition cursor-pointer"
+                      onClick={() => handleAnchorNavigation(link.link.substring(1))}
+                    >
+                      {link.text}
+                    </button>
+                  ) : (
+                    <Link 
+                      href={link.link} 
+                      className="text-sm text-gray-300 hover:text-[#14B8A6] transition"
+                    >
+                      {link.text}
+                    </Link>
+                  )}
                 </li>
               ))}
               <li>
@@ -127,9 +129,8 @@ const Header: React.FC = () => {
             </ul>
           </nav>
           
-          {/* Mobile menu button - with no nested elements that could capture events */}
+          {/* Mobile menu button */}
           <div className="md:hidden flex items-center z-20">
-            {/* Completely new implementation avoiding any nesting */}
             {isMenuOpen ? (
               <X 
                 className="h-6 w-6 text-gray-300 hover:text-[#14B8A6] cursor-pointer"
@@ -138,6 +139,7 @@ const Header: React.FC = () => {
             ) : (
               <Menu 
                 className="h-6 w-6 text-gray-300 hover:text-[#14B8A6] cursor-pointer"
+                id="menu-button"
                 onClick={(e) => {
                   e.stopPropagation();
                   setIsMenuOpen(true);
@@ -148,7 +150,7 @@ const Header: React.FC = () => {
         </div>
       </div>
       
-      {/* Mobile menu, show/hide based on menu state */}
+      {/* Mobile menu */}
       <div
         className={`${
           isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
@@ -157,17 +159,24 @@ const Header: React.FC = () => {
       >
         <div className="px-4 py-3 space-y-2 sm:px-6">
           {headerSection.navLinks.map((link, index) => (
-            <a
-              key={index}
-              href={link.link}
-              className="block px-4 py-3 rounded-md text-base font-medium text-gray-300 hover:bg-[#1E293B] hover:text-[#14B8A6] transition"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleLinkClick(e);
-              }}
-            >
-              {link.text}
-            </a>
+            link.link.startsWith('#') ? (
+              <button
+                key={index}
+                className="block w-full text-left px-4 py-3 rounded-md text-base font-medium text-gray-300 hover:bg-[#1E293B] hover:text-[#14B8A6] transition"
+                onClick={() => handleAnchorNavigation(link.link.substring(1))}
+              >
+                {link.text}
+              </button>
+            ) : (
+              <Link
+                key={index}
+                href={link.link}
+                className="block px-4 py-3 rounded-md text-base font-medium text-gray-300 hover:bg-[#1E293B] hover:text-[#14B8A6] transition"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.text}
+              </Link>
+            )
           ))}
           <a
             href={headerSection.githubLink}
