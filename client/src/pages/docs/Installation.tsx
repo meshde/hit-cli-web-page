@@ -16,8 +16,11 @@ const Installation: React.FC = () => {
           <code>hit</code> can be installed using Homebrew:
         </p>
         <Terminal>
-          <p>brew tap meshde/hit</p>
-          <p>brew install hit</p>
+          <code className="text-sm sm:text-base">
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">brew</span> <span className="text-[#8B5CF6]">tap</span> meshde/hit
+            <br />
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">brew</span> <span className="text-[#8B5CF6]">install</span> hit
+          </code>
         </Terminal>
 
         <h3 className="text-2xl font-bold text-[#F9FAFB] mt-8 mb-4">Linux</h3>

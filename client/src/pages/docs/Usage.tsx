@@ -4,24 +4,8 @@ import DocumentationLayout from '../../components/DocumentationLayout';
 import Terminal from '../../components/Terminal';
 import CodeBlock from '../../components/CodeBlock';
 
-const codeStyle = {
-  backgroundColor: '#1a2033',
-  padding: '0.2rem 0.4rem',
-  borderRadius: '0.25rem',
-  fontFamily: 'monospace',
-  fontSize: '0.875rem',
-  color: '#14B8A6',
-  whiteSpace: 'nowrap',
-};
-
 const Usage: React.FC = () => {
   useEffect(() => {
-    // Apply styles to all code elements
-    const codeElements = document.querySelectorAll('code');
-    codeElements.forEach(el => {
-      Object.assign(el.style, codeStyle);
-    });
-    
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
@@ -51,7 +35,9 @@ const Usage: React.FC = () => {
         </p>
 
         <Terminal>
-          <p>hit run list-users</p>
+          <code className="text-sm sm:text-base">
+            <span className="text-[#6EE7B7]">$</span> <span className="text-[#14B8A6]">hit</span> <span className="text-[#8B5CF6]">run</span> list-users
+          </code>
         </Terminal>
 
         <div className="p-4 bg-[#1E293B] rounded-md mt-8 mb-6">
