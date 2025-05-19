@@ -40,16 +40,16 @@ const Introduction: React.FC = () => {
         </p>
         
         <div className="p-4 bg-[#1E293B] rounded-md mt-8 mb-6">
-          <p className="text-gray-300 font-medium">
+          <div className="text-gray-300 font-medium">
             <span className="text-[#14B8A6] font-bold mr-2">Key Benefits:</span> 
-            <ul className="list-disc pl-6 mt-2 space-y-2">
-              <li>Transforms REST API endpoints into easy-to-use command-line commands</li>
-              <li>Allows sharing API configuration through version control</li>
-              <li>Supports multiple environments (production, staging, development)</li>
-              <li>Handles authentication and headers consistently</li>
-              <li>Provides postscript processing for automation</li>
-            </ul>
-          </p>
+          </div>
+          <ul className="list-disc pl-6 mt-2 space-y-2 text-gray-300">
+            <li>Transforms REST API endpoints into easy-to-use command-line commands</li>
+            <li>Allows sharing API configuration through version control</li>
+            <li>Supports multiple environments (production, staging, development)</li>
+            <li>Handles authentication and headers consistently</li>
+            <li>Provides postscript processing for automation</li>
+          </ul>
         </div>
       </section>
     </DocumentationLayout>
