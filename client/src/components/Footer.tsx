@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'wouter';
 import { Github, Twitter } from 'lucide-react';
+import { FaDiscord } from 'react-icons/fa';
 import { footerSection } from '../content';
 import logoImage from '../assets/hit-logo-transparent.png';
 
@@ -28,6 +29,9 @@ const Footer: React.FC = () => {
               </a>
               <a href={footerSection.socialLinks.twitter} className="text-gray-400 hover:text-[#14B8A6] transition" target="_blank" rel="noopener noreferrer">
                 <Twitter className="w-6 h-6" />
+              </a>
+              <a href={footerSection.socialLinks.discord} className="text-gray-400 hover:text-[#14B8A6] transition" target="_blank" rel="noopener noreferrer">
+                <FaDiscord className="w-6 h-6" />
               </a>
             </div>
           </div>

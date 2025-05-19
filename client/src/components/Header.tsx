@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { Github, Menu, X } from 'lucide-react';
+import { FaDiscord } from 'react-icons/fa';
 import { headerSection } from '../content';
 import logoImage from '../assets/hit-logo-transparent.png';
 
@@ -126,6 +127,18 @@ const Header: React.FC = () => {
                   GitHub
                 </a>
               </li>
+              <li>
+                <a 
+                  href={headerSection.discordLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center text-sm text-gray-300 hover:text-[#14B8A6] transition"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <FaDiscord className="w-5 h-5 mr-1" />
+                  Discord
+                </a>
+              </li>
             </ul>
           </nav>
           
@@ -190,6 +203,19 @@ const Header: React.FC = () => {
           >
             <Github className="w-5 h-5 mr-2" />
             GitHub
+          </a>
+          <a
+            href={headerSection.discordLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center px-4 py-3 rounded-md text-base font-medium text-gray-300 hover:bg-[#1E293B] hover:text-[#14B8A6] transition"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsMenuOpen(false);
+            }}
+          >
+            <FaDiscord className="w-5 h-5 mr-2" />
+            Discord
           </a>
         </div>
       </div>
